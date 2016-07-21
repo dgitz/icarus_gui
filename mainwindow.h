@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <receiver.h>
+#include "/home/robot/catkin_ws/devel/include/icarus_rover_v2/Definitions.h"
 namespace Ui {
 class MainWindow;
 }

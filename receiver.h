@@ -53,7 +53,8 @@
 
 #include <QDialog>
 #include <QHostAddress>
-
+#include "/home/robot/catkin_ws/devel/include/icarus_rover_v2/Definitions.h"
+#include "helper.h"
 QT_BEGIN_NAMESPACE
 class QLabel;
 class QPushButton;

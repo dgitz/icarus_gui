@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     receiver.cpp
 
 HEADERS  += mainwindow.h \
-    receiver.h
+    receiver.h \
+    helper.h
 
 FORMS    += mainwindow.ui
