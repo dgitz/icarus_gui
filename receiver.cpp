@@ -54,33 +54,18 @@
 #include "receiver.h"
 
 Receiver::Receiver(QWidget *parent)
-    : QDialog(parent)
+    : QObject(parent)
+{
+}
+void Receiver::Start()
 {
     groupAddress = QHostAddress("239.255.43.21");
-
-    //statusLabel = new QLabel(tr("Listening for multicasted messages"));
-    //quitButton = new QPushButton(tr("&Quit"));
-
     udpSocket = new QUdpSocket(this);
     udpSocket->bind(QHostAddress::AnyIPv4, 45454, QUdpSocket::ShareAddress);
     udpSocket->joinMulticastGroup(groupAddress);
 
     connect(udpSocket, SIGNAL(readyRead()),
             this, SLOT(processPendingDatagrams()));
-    //connect(quitButton, SIGNAL(clicked()), this, SLOT(close()));
-
-    /*QHBoxLayout *buttonLayout = new QHBoxLayout;
-    buttonLayout->addStretch(1);
-    buttonLayout->addWidget(quitButton);
-    buttonLayout->addStretch(1);
-
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addWidget(statusLabel);
-    mainLayout->addLayout(buttonLayout);
-    setLayout(mainLayout);
-
-    setWindowTitle(tr("Multicast Receiver"));
-    */
 }
 
 void Receiver::processPendingDatagrams()
@@ -91,29 +76,41 @@ void Receiver::processPendingDatagrams()
         datagram.resize(udpSocket->pendingDatagramSize());
         udpSocket->readDatagram(datagram.data(), datagram.size());
         QList<QByteArray> items = datagram.split(',');
-         qDebug() << "New Message";
-        qDebug() << items.at(0) << DIAGNOSTIC_ID;
+        //qDebug() << "New Message";
+        //qDebug() << items.at(0) << DIAGNOSTIC_ID;
         int message_id = items.at(0).toInt();
+        Diagnostic newdiag;
+
+
         switch(message_id)
         {
             case DIAGNOSTIC_ID:
             {
-                qDebug() << "Matched!";
+                //qDebug() << "Matched!";
                 Diagnostic newdiag;
                 newdiag.NodeName = items.at(1).toStdString();
-                emit(newdiag);
+                newdiag.System = items.at(2).toInt();
+                newdiag.Subsystem = items.at(3).toInt();
+                newdiag.Component = items.at(4).toInt();
+                newdiag.DiagnosticType = items.at(5).toInt();
+                newdiag.Level = items.at(6).toInt();
+                newdiag.Message = items.at(7).toInt();
+                newdiag.Description = items.at(8).toStdString();
+                emit new_diagnosticmessage(newdiag);
                 break;
             }
             default:
             {
-                qDebug() << "No Match";
+                //qDebug() << "No Match";
                 break;
             }
         }
         foreach (const QByteArray &item,items)
         {
-            qDebug() << item;
+            //qDebug() << item;
         }
+
+
 
         //statusLabel->setText(tr("Received datagram: \"%1\"")
         //                     .arg(datagram.data()));

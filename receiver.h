@@ -61,21 +61,24 @@ class QPushButton;
 class QUdpSocket;
 QT_END_NAMESPACE
 
-class Receiver : public QDialog
+class Receiver : public QObject
 {
     Q_OBJECT
 
 public:
     Receiver(QWidget *parent = 0);
+    void Start();
 
 private slots:
     void processPendingDatagrams();
-
+signals:
+    void new_diagnosticmessage(const Diagnostic&);
 private:
     QLabel *statusLabel;
     QPushButton *quitButton;
     QUdpSocket *udpSocket;
     QHostAddress groupAddress;
+
 };
 
 #endif

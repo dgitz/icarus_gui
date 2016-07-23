@@ -15,9 +15,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    std::string get_level_string(int);
+
+public slots:
+    void update_messageviewer(const Diagnostic &diag);
+
+signals:
+    void new_diagnosticmessage(Diagnostic);
 
 private:
     Ui::MainWindow *ui;
+    Receiver myReceiver;
 };
 
 #endif // MAINWINDOW_H
