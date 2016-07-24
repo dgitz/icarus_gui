@@ -20,6 +20,8 @@ public:
 
 public slots:
     void update_messageviewer(const Diagnostic &diag);
+    void kill_application(const bool);
+    void refresh_messageviewer(const QString);
    // void update_treeviewer(const Diagnostic &diag);
    // void update_nodelist(const Diagnostic &diag);
 

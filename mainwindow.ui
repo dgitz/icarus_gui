@@ -14,12 +14,42 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QComboBox" name="comboBox"/>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="bCLOSE">
+      <property name="minimumSize">
+       <size>
+        <width>782</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>782</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>CLOSE</string>
+      </property>
+     </widget>
     </item>
-    <item>
+    <item row="2" column="0" colspan="2">
      <widget class="QTextBrowser" name="textBrowser"/>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QComboBox" name="comboBox">
+      <property name="font">
+       <font>
+        <pointsize>48</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

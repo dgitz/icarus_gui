@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->setCurrentIndex(1);
     myReceiver.Start();
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_messageviewer(Diagnostic)));
-
+    connect(ui->bCLOSE,SIGNAL(clicked(bool)),this,SLOT(kill_application(bool)));
+    connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(refresh_messageviewer(QString)));
     //connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_treeviewer(Diagnostic)));
     //connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_nodelist(Diagnostic)));
 }
@@ -27,6 +28,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::kill_application(bool value)
+{
+    qApp->exit();
+}
+void MainWindow::refresh_messageviewer(QString value)
+{
+    ui->textBrowser->clear();
+}
+
 void MainWindow::update_messageviewer(const Diagnostic &diag)
 {
     QDateTime dateTime = QDateTime::currentDateTime();
