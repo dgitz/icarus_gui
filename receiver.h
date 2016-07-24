@@ -73,9 +73,8 @@ private slots:
     void processPendingDatagrams();
 signals:
     void new_diagnosticmessage(const Diagnostic&);
+    void new_devicemessage(const Device&);
 private:
-    QLabel *statusLabel;
-    QPushButton *quitButton;
     QUdpSocket *udpSocket;
     QHostAddress groupAddress;
 

@@ -76,10 +76,8 @@ void Receiver::processPendingDatagrams()
         datagram.resize(udpSocket->pendingDatagramSize());
         udpSocket->readDatagram(datagram.data(), datagram.size());
         QList<QByteArray> items = datagram.split(',');
-        //qDebug() << "New Message";
-        //qDebug() << items.at(0) << DIAGNOSTIC_ID;
         int message_id = items.at(0).toInt();
-        Diagnostic newdiag;
+
 
 
         switch(message_id)
@@ -99,11 +97,21 @@ void Receiver::processPendingDatagrams()
                 emit new_diagnosticmessage(newdiag);
                 break;
             }
-            default:
-            {
-                //qDebug() << "No Match";
-                break;
-            }
+        case DEVICE_ID:
+        {
+                Device newdevice;
+                newdevice.DeviceName = items.at(1).toStdString();
+                newdevice.Architecture = items.at(2).toStdString();
+               // qDebug() << "Got device info: " << QString::fromStdString(newdevice.DeviceName);
+                emit new_devicemessage(newdevice);
+
+        }
+
+        default:
+        {
+            //qDebug() << "No Match";
+            break;
+        }
         }
         foreach (const QByteArray &item,items)
         {

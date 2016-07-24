@@ -19,6 +19,8 @@ struct Node
 };
 struct Device
 {
+    std::string DeviceName;
+    std::string Architecture;
     std::vector<Node> Nodes;
 };
 
