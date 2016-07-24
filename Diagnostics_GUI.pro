@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-07-20T18:58:20
+# Project created by QtCreator 2016-07-24T08:40:11
 #
 #-------------------------------------------------
 
@@ -18,7 +18,11 @@ SOURCES += main.cpp\
     receiver.cpp
 
 HEADERS  += mainwindow.h \
-    receiver.h \
-    helper.h
+    helper.h \
+    receiver.h
 
 FORMS    += mainwindow.ui
+
+CONFIG += mobility
+MOBILITY = 
+

@@ -13,6 +13,14 @@ struct Diagnostic
     int Message;
     std::string Description;
 };
+struct Node
+{
+    std::string NodeName;
+};
+struct Device
+{
+    std::vector<Node> Nodes;
+};
 
 //COPIED FROM Definitions.h
 #define DIAGNOSTIC_ID 0xAB12

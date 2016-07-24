@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDateTime>
 #include <receiver.h>
 #include "/home/robot/catkin_ws/devel/include/icarus_rover_v2/Definitions.h"
 namespace Ui {
@@ -19,6 +20,8 @@ public:
 
 public slots:
     void update_messageviewer(const Diagnostic &diag);
+   // void update_treeviewer(const Diagnostic &diag);
+   // void update_nodelist(const Diagnostic &diag);
 
 signals:
     void new_diagnosticmessage(Diagnostic);
@@ -26,6 +29,7 @@ signals:
 private:
     Ui::MainWindow *ui;
     Receiver myReceiver;
+    std::vector<Node> NodeList;
 };
 
 #endif // MAINWINDOW_H
