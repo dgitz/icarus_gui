@@ -95,6 +95,27 @@ void Receiver::processPendingDatagrams()
                 newdiag.Message = items.at(7).toInt();
                 newdiag.Description = items.at(8).toStdString();
                 emit new_diagnosticmessage(newdiag);
+                bool add_new_node = true;
+               /* for(int i = 0; i < NodeList.size();i++)
+                {
+                    if(NodeList.at(i).NodeName == newdiag.NodeName)
+                    {
+                        NodeList.at(i).time_delta_ms = 0;
+                        add_new_node = false;
+                    }
+                }
+                if(add_new_node == true)
+                {
+                    Node newnode;
+                    newnode.NodeName = newdiag.NodeName;
+                    newnode.time_delta_ms = 0;
+                    NodeList.push_back(newnode);
+                }
+                for(int i = 0; i < NodeList.size();i++)
+                {
+                    qDebug() << "Node name: " << QString::fromStdString(NodeList.at(i).NodeName) << " dt: " << NodeList.at(i).time_delta_ms;
+                }
+                */
                 break;
             }
         case DEVICE_ID:
@@ -102,6 +123,8 @@ void Receiver::processPendingDatagrams()
                 Device newdevice;
                 newdevice.DeviceName = items.at(1).toStdString();
                 newdevice.Architecture = items.at(2).toStdString();
+
+
                // qDebug() << "Got device info: " << QString::fromStdString(newdevice.DeviceName);
                 emit new_devicemessage(newdevice);
 

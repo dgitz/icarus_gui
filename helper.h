@@ -4,6 +4,7 @@
 
 struct Diagnostic
 {
+
     std::string NodeName;
     int System;
     int Subsystem;
@@ -15,14 +16,21 @@ struct Diagnostic
 };
 struct Node
 {
+    qint64 time_delta_ms;
     std::string NodeName;
+    int Level;
 };
 struct Device
 {
+
     std::string DeviceName;
     std::string Architecture;
+    int Level;
+    qint64 time_delta_ms;
     std::vector<Node> Nodes;
 };
+
+
 
 //COPIED FROM Definitions.h
 #define DIAGNOSTIC_ID 0xAB12
