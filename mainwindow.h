@@ -5,6 +5,7 @@
 #include <QString>
 #include <QDateTime>
 #include <QTimer>
+#include <QProcess>
 #include <receiver.h>
 #include "/home/robot/catkin_ws/devel/include/icarus_rover_v2/Definitions.h"
 namespace Ui {
@@ -23,6 +24,8 @@ public:
 public slots:
     void update_messageviewer(const Diagnostic &diag);
     void kill_application(const bool);
+    void stop_system(const bool);
+    void launch_system(const bool);
     void refresh_messageviewer(const QString);
     void update_devicelist(const Diagnostic &diag);
     void update_devicelist(const Device &device);

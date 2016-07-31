@@ -20,7 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
     myReceiver.Start();
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_messageviewer(Diagnostic)));
     connect(ui->bCLOSE,SIGNAL(clicked(bool)),this,SLOT(kill_application(bool)));
-    connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(refresh_messageviewer(QString)))''
+    connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(refresh_messageviewer(QString)));
+    connect(ui->bLaunchSystem,SIGNAL(clicked(bool)),this,SLOT(launch_system(bool)));
+    connect(ui->bStopSystem,SIGNAL(clicked(bool)),this,SLOT(stop_system(bool)));
 
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_devicelist(Diagnostic)));
     connect(&myReceiver,SIGNAL(new_devicemessage(Device)),this,SLOT(update_devicelist(Device)));
@@ -37,6 +39,16 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::stop_system(bool value)
+{
+   // QProcess::execute("ssh robot@dgitzrosmaster & ./scripts/stopSystem & exit");
+   // system("ssh robot@dgitzrosmaster & ./scripts/stopSystem & exit");
+}
+void MainWindow::launch_system(bool value)
+{
+   // QProcess::execute("ssh robot@dgitzrosmaster & ./scripts/stopSystem & exit");
+}
+
 void MainWindow::kill_application(bool value)
 {
     qApp->exit();
