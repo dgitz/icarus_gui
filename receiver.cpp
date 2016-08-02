@@ -121,9 +121,10 @@ void Receiver::processPendingDatagrams()
         case DEVICE_ID:
         {
                 Device newdevice;
-                newdevice.DeviceName = items.at(1).toStdString();
-                newdevice.Architecture = items.at(2).toStdString();
-
+                newdevice.DeviceParent = items.at(1).toStdString();
+                newdevice.DeviceName = items.at(2).toStdString();
+                newdevice.DeviceType = items.at(3).toStdString();
+                newdevice.Architecture = items.at(4).toStdString();
 
                // qDebug() << "Got device info: " << QString::fromStdString(newdevice.DeviceName);
                 emit new_devicemessage(newdevice);

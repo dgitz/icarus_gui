@@ -25,6 +25,8 @@ struct Device
 
     std::string DeviceName;
     std::string Architecture;
+    std::string DeviceType;
+    std::string DeviceParent;
     int Level;
     qint64 time_delta_ms;
     std::vector<Node> Nodes;

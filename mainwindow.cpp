@@ -13,16 +13,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("ERROR");
     ui->comboBox->addItem("FATAL");
     ui->comboBox->setCurrentIndex(2);
-
+    messageviewer_filter = "";
      ui->treeDeviceList->setColumnCount(3);
      ui->treeDeviceList->setHeaderLabels(QStringList() << "Node" << "Status" << "dt");
 
     myReceiver.Start();
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_messageviewer(Diagnostic)));
     connect(ui->bCLOSE,SIGNAL(clicked(bool)),this,SLOT(kill_application(bool)));
-    connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(refresh_messageviewer(QString)));
+    connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(clear_messageviewer(QString)));
+    connect(ui->treeDeviceList,SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),this,SLOT(changefilter_messageviewer()));
     connect(ui->bLaunchSystem,SIGNAL(clicked(bool)),this,SLOT(launch_system(bool)));
     connect(ui->bStopSystem,SIGNAL(clicked(bool)),this,SLOT(stop_system(bool)));
+    connect(ui->bClearFilter,SIGNAL(clicked(bool)),this,SLOT(clearfilter_messageviewer()));
 
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_devicelist(Diagnostic)));
     connect(&myReceiver,SIGNAL(new_devicemessage(Device)),this,SLOT(update_devicelist(Device)));
@@ -53,10 +55,26 @@ void MainWindow::kill_application(bool value)
 {
     qApp->exit();
 }
-void MainWindow::refresh_messageviewer(QString value)
+void MainWindow::changefilter_messageviewer()
+{
+    QString item = ui->treeDeviceList->currentItem()->text(0);
+    messageviewer_filter = item;
+    ui->textBrowser->clear();
+    qDebug() << "changing filter to: " << item;
+
+   // qDebug() << " new: " << newitem.text(0);
+}
+
+void MainWindow::clear_messageviewer(QString value)
 {
     ui->textBrowser->clear();
 }
+void MainWindow::clearfilter_messageviewer()
+{
+    messageviewer_filter = "";
+    ui->textBrowser->clear();
+}
+
 void MainWindow::update_devicelist()
 {
     for(int i = 0; i < DeviceList.size();i++)
@@ -166,11 +184,11 @@ void MainWindow::update_devicelistviewer()
                             {
                                 (*child_it)->setBackground(0,brush_green);
                             }
-                            else if((DeviceList.at(i).Nodes.at(j).time_delta_ms > 1000) && (DeviceList.at(i).Nodes.at(j).time_delta_ms <= 2000))
+                            else if((DeviceList.at(i).Nodes.at(j).time_delta_ms > 1000) && (DeviceList.at(i).Nodes.at(j).time_delta_ms <= 6000))
                             {
                                 (*child_it)->setBackground(0,brush_orange);
                             }
-                            else if(DeviceList.at(i).Nodes.at(j).time_delta_ms > 2000)
+                            else if(DeviceList.at(i).Nodes.at(j).time_delta_ms > 6000)
                             {
                                 (*child_it)->setBackground(0,brush_gray);
                                 level_string = "NO COMM";
@@ -208,11 +226,11 @@ void MainWindow::update_devicelistviewer()
                 {
                     (*it)->setBackground(0,brush_green);
                 }
-                else if((device_time_delta > 1000) && (device_time_delta <= 2000))
+                else if((device_time_delta > 1000) && (device_time_delta <= 6000))
                 {
                     (*it)->setBackground(0,brush_orange);
                 }
-                else if(device_time_delta > 2000)
+                else if(device_time_delta > 6000)
                 {
                     (*it)->setBackground(0,brush_gray);
                     device_level_string = "NO COMM";
@@ -245,10 +263,26 @@ void MainWindow::update_devicelistviewer()
 void MainWindow::update_messageviewer(const Diagnostic &diag)
 {
     QDateTime dateTime = QDateTime::currentDateTime();
-    if(diag.Level >= ui->comboBox->currentIndex())
+    if(messageviewer_filter == "")
     {
-        std::string tempstr = dateTime.toString().toStdString() + " Node:" + diag.NodeName + " Level: " + get_level_string(diag.Level) + " " + diag.Description;
-        ui->textBrowser->append(QString::fromStdString(tempstr));
+
+        if(diag.Level >= ui->comboBox->currentIndex())
+        {
+            std::string tempstr = dateTime.toString().toStdString() + " Node:" + diag.NodeName + " Level: " + get_level_string(diag.Level) + " " + diag.Description;
+            ui->textBrowser->append(QString::fromStdString(tempstr));
+        }
+    }
+    else
+    {
+        if(diag.Level >= ui->comboBox->currentIndex())
+        {
+            std::size_t found = diag.NodeName.find(messageviewer_filter.toStdString());
+            if(found != std::string::npos)
+            {
+                std::string tempstr = dateTime.toString().toStdString() + " Node:" + diag.NodeName + " Level: " + get_level_string(diag.Level) + " " + diag.Description;
+                ui->textBrowser->append(QString::fromStdString(tempstr));
+            }
+        }
     }
 }
 
