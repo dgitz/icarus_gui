@@ -53,7 +53,6 @@
 
 #include <QDialog>
 #include <QHostAddress>
-#include "/home/robot/catkin_ws/devel/include/icarus_rover_v2/Definitions.h"
 #include "helper.h"
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -74,7 +73,9 @@ private slots:
 signals:
     void new_diagnosticmessage(const Diagnostic&);
     void new_devicemessage(const Device&);
+    void new_resourcemessage(const Resource&);
 private:
+
     QUdpSocket *udpSocket;
     QHostAddress groupAddress;
 

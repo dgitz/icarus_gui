@@ -77,9 +77,6 @@ void Receiver::processPendingDatagrams()
         udpSocket->readDatagram(datagram.data(), datagram.size());
         QList<QByteArray> items = datagram.split(',');
         int message_id = items.at(0).toInt();
-
-
-
         switch(message_id)
         {
             case DIAGNOSTIC_ID:
@@ -92,50 +89,37 @@ void Receiver::processPendingDatagrams()
                 newdiag.Component = items.at(4).toInt();
                 newdiag.DiagnosticType = items.at(5).toInt();
                 newdiag.Level = items.at(6).toInt();
+
                 newdiag.Message = items.at(7).toInt();
                 newdiag.Description = items.at(8).toStdString();
                 emit new_diagnosticmessage(newdiag);
-                bool add_new_node = true;
-               /* for(int i = 0; i < NodeList.size();i++)
-                {
-                    if(NodeList.at(i).NodeName == newdiag.NodeName)
-                    {
-                        NodeList.at(i).time_delta_ms = 0;
-                        add_new_node = false;
-                    }
-                }
-                if(add_new_node == true)
-                {
-                    Node newnode;
-                    newnode.NodeName = newdiag.NodeName;
-                    newnode.time_delta_ms = 0;
-                    NodeList.push_back(newnode);
-                }
-                for(int i = 0; i < NodeList.size();i++)
-                {
-                    qDebug() << "Node name: " << QString::fromStdString(NodeList.at(i).NodeName) << " dt: " << NodeList.at(i).time_delta_ms;
-                }
-                */
                 break;
             }
-        case DEVICE_ID:
-        {
+            case DEVICE_ID:
+            {
                 Device newdevice;
                 newdevice.DeviceParent = items.at(1).toStdString();
                 newdevice.DeviceName = items.at(2).toStdString();
                 newdevice.DeviceType = items.at(3).toStdString();
                 newdevice.Architecture = items.at(4).toStdString();
-
-               // qDebug() << "Got device info: " << QString::fromStdString(newdevice.DeviceName);
                 emit new_devicemessage(newdevice);
+                break;
+            }
+            case 0xAB11:
+            {
+                Resource newresource;
+                newresource.NodeName = items.at(1).toStdString();
+                newresource.ram_used_Mb = items.at(2).toInt();
+                newresource.cpu_used_perc  = items.at(3).toInt();
+                emit new_resourcemessage(newresource);
+                break;
+            }
 
-        }
-
-        default:
-        {
-            //qDebug() << "No Match";
-            break;
-        }
+            default:
+            {
+                //qDebug() << "No Match";
+                break;
+            }
         }
         foreach (const QByteArray &item,items)
         {

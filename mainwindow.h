@@ -7,8 +7,12 @@
 #include <QTimer>
 #include <QProcess>
 #include <QTreeWidget>
+#include <QtCharts>
+#include <QLineSeries>
 #include <receiver.h>
-#include "/home/robot/catkin_ws/devel/include/icarus_rover_v2/Definitions.h"
+
+
+using namespace QtCharts;
 namespace Ui {
 class MainWindow;
 }
@@ -42,7 +46,8 @@ signals:
 private:
     Ui::MainWindow *ui;
     Receiver myReceiver;
-
+   // QChart *ResourceChart;
+    //QChartView *ResourceChartView;
 
     std::vector<Device> DeviceList;
     QString messageviewer_filter;

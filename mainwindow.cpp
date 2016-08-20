@@ -5,6 +5,22 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    /*chart->legend()->hide();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle("Simple line chart example");
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    QMainWindow window;
+    window.setCentralWidget(chartView);
+    window.resize(400, 300);
+    */
+    //ResourceChart->legend()->hide();
+    //ResourceChart->setTitle("Resources Used");
+    //ResourceChartView = new QChartView(ResourceChart);
+    //ResourceChartView->setRenderHint(QPainter::Antialiasing);
     ui->setupUi(this);
     ui->comboBox->addItem("DEBUG");
     ui->comboBox->addItem("INFO");
@@ -13,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("ERROR");
     ui->comboBox->addItem("FATAL");
     ui->comboBox->setCurrentIndex(2);
+   //QMainWindow window;
+  // window.setCentralWidget(ResourceChartView);
+   //window.resize(400,300);
+   //window.show();
     messageviewer_filter = "";
      ui->treeDeviceList->setColumnCount(3);
      ui->treeDeviceList->setHeaderLabels(QStringList() << "Node" << "Status" << "dt");
@@ -35,6 +55,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer *timer_100ms = new QTimer(this);
     connect(timer_100ms,SIGNAL(timeout()),this,SLOT(update_devicelistviewer()));
     timer_100ms->start(100);
+
+
+
 }
 
 MainWindow::~MainWindow()
