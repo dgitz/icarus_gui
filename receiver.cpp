@@ -81,7 +81,7 @@ void Receiver::processPendingDatagrams()
         {
             case DIAGNOSTIC_ID:
             {
-                //qDebug() << "Matched!";
+
                 Diagnostic newdiag;
                 newdiag.NodeName = items.at(1).toStdString();
                 newdiag.System = items.at(2).toInt();

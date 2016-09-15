@@ -140,8 +140,8 @@ public:
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setMinimumSize(QSize(325, 16));
-        label_2->setMaximumSize(QSize(325, 16));
+        label_2->setMinimumSize(QSize(300, 16));
+        label_2->setMaximumSize(QSize(300, 16));
         label_2->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_2->addWidget(label_2);
@@ -163,7 +163,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
