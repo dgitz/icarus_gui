@@ -14,9 +14,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDial>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
@@ -43,11 +46,24 @@ public:
     QComboBox *comboBox;
     QTextBrowser *textBrowser;
     QTreeWidget *treeDeviceList;
-    QWidget *widget;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QPushButton *bClearFilter;
     QWidget *tabResources;
+    QWidget *tab;
+    QGridLayout *gridLayout;
+    QDial *dial_8;
+    QLineEdit *tRCServer;
+    QDial *dial_5;
+    QDial *dial_3;
+    QDial *dial_7;
+    QDial *dial_2;
+    QDial *dial_4;
+    QDial *dial_6;
+    QPushButton *bSetRCServer;
+    QLabel *label;
+    QDial *dial_1;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -130,40 +146,133 @@ public:
         treeDeviceList->setGeometry(QRect(499, 29, 451, 340));
         treeDeviceList->setMinimumSize(QSize(451, 340));
         treeDeviceList->setMaximumSize(QSize(451, 340));
-        widget = new QWidget(tabDiagnostics);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(500, 0, 449, 33));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget2 = new QWidget(tabDiagnostics);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(500, 0, 449, 33));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget2);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setMinimumSize(QSize(325, 16));
-        label_2->setMaximumSize(QSize(325, 16));
+        label_2->setMinimumSize(QSize(300, 16));
+        label_2->setMaximumSize(QSize(300, 16));
         label_2->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_2->addWidget(label_2);
 
-        bClearFilter = new QPushButton(widget);
+        bClearFilter = new QPushButton(layoutWidget2);
         bClearFilter->setObjectName(QStringLiteral("bClearFilter"));
 
         horizontalLayout_2->addWidget(bClearFilter);
 
         tabWidget->addTab(tabDiagnostics, QString());
-        layoutWidget->raise();
-        label_2->raise();
-        treeDeviceList->raise();
-        treeDeviceList->raise();
         tabResources = new QWidget();
         tabResources->setObjectName(QStringLiteral("tabResources"));
         tabWidget->addTab(tabResources, QString());
+        tab = new QWidget();
+        tab->setObjectName(QStringLiteral("tab"));
+        gridLayout = new QGridLayout(tab);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        dial_8 = new QDial(tab);
+        dial_8->setObjectName(QStringLiteral("dial_8"));
+        dial_8->setMinimum(-32768);
+        dial_8->setMaximum(32787);
+        dial_8->setSingleStep(10);
+        dial_8->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_8, 4, 3, 1, 1);
+
+        tRCServer = new QLineEdit(tab);
+        tRCServer->setObjectName(QStringLiteral("tRCServer"));
+        tRCServer->setMaximumSize(QSize(300, 30));
+
+        gridLayout->addWidget(tRCServer, 1, 1, 1, 1);
+
+        dial_5 = new QDial(tab);
+        dial_5->setObjectName(QStringLiteral("dial_5"));
+        dial_5->setMinimum(-32768);
+        dial_5->setMaximum(32787);
+        dial_5->setSingleStep(10);
+        dial_5->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_5, 4, 0, 1, 1);
+
+        dial_3 = new QDial(tab);
+        dial_3->setObjectName(QStringLiteral("dial_3"));
+        dial_3->setMinimum(-32768);
+        dial_3->setMaximum(32787);
+        dial_3->setSingleStep(10);
+        dial_3->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_3, 2, 2, 1, 1);
+
+        dial_7 = new QDial(tab);
+        dial_7->setObjectName(QStringLiteral("dial_7"));
+        dial_7->setMinimum(-32768);
+        dial_7->setMaximum(32787);
+        dial_7->setSingleStep(10);
+        dial_7->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_7, 4, 2, 1, 1);
+
+        dial_2 = new QDial(tab);
+        dial_2->setObjectName(QStringLiteral("dial_2"));
+        dial_2->setMinimum(-32768);
+        dial_2->setMaximum(32787);
+        dial_2->setSingleStep(10);
+        dial_2->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_2, 2, 1, 1, 1);
+
+        dial_4 = new QDial(tab);
+        dial_4->setObjectName(QStringLiteral("dial_4"));
+        dial_4->setMinimum(-32768);
+        dial_4->setMaximum(32787);
+        dial_4->setSingleStep(10);
+        dial_4->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_4, 2, 3, 1, 1);
+
+        dial_6 = new QDial(tab);
+        dial_6->setObjectName(QStringLiteral("dial_6"));
+        dial_6->setMinimum(-32768);
+        dial_6->setMaximum(32787);
+        dial_6->setSingleStep(10);
+        dial_6->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_6, 4, 1, 1, 1);
+
+        bSetRCServer = new QPushButton(tab);
+        bSetRCServer->setObjectName(QStringLiteral("bSetRCServer"));
+        bSetRCServer->setMaximumSize(QSize(50, 16777215));
+
+        gridLayout->addWidget(bSetRCServer, 1, 2, 1, 1);
+
+        label = new QLabel(tab);
+        label->setObjectName(QStringLiteral("label"));
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout->addWidget(label, 1, 0, 1, 1);
+
+        dial_1 = new QDial(tab);
+        dial_1->setObjectName(QStringLiteral("dial_1"));
+        dial_1->setMinimum(-32768);
+        dial_1->setMaximum(32787);
+        dial_1->setSingleStep(10);
+        dial_1->setNotchesVisible(true);
+
+        gridLayout->addWidget(dial_1, 2, 0, 1, 1);
+
+        tabWidget->addTab(tab, QString());
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -181,6 +290,9 @@ public:
         bClearFilter->setText(QApplication::translate("MainWindow", "Clear Filter", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabDiagnostics), QApplication::translate("MainWindow", "Diagnostics", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabResources), QApplication::translate("MainWindow", "Resources", 0));
+        bSetRCServer->setText(QApplication::translate("MainWindow", "SET", 0));
+        label->setText(QApplication::translate("MainWindow", "ROSCORE:", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Remote Control", 0));
     } // retranslateUi
 
 };

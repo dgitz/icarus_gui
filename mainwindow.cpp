@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    std::string default_ROSCORE = "10.0.0.111";
     /*chart->legend()->hide();
     chart->addSeries(series);
     chart->createDefaultAxes();
@@ -36,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     messageviewer_filter = "";
      ui->treeDeviceList->setColumnCount(3);
      ui->treeDeviceList->setHeaderLabels(QStringList() << "Node" << "Status" << "dt");
+     ui->tRCServer->setText(QString::fromStdString(default_ROSCORE));
+     myTransmitter.set_RC_server(QString::fromStdString(default_ROSCORE));
 
     myReceiver.Start();
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_messageviewer(Diagnostic)));
@@ -48,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_devicelist(Diagnostic)));
     connect(&myReceiver,SIGNAL(new_devicemessage(Device)),this,SLOT(update_devicelist(Device)));
+    connect(ui->bSetRCServer,SIGNAL(clicked(bool)),this,SLOT(change_RC_Server(bool)));
     QTimer *timer_10ms = new QTimer(this);
     connect(timer_10ms,SIGNAL(timeout()),this,SLOT(update_devicelist()));
     timer_10ms->start(10);
@@ -56,8 +60,43 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer_100ms,SIGNAL(timeout()),this,SLOT(update_devicelistviewer()));
     timer_100ms->start(100);
 
+    connect(ui->dial_1,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_2,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_3,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_4,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_5,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_6,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_7,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_8,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
 
 
+}
+void MainWindow::change_RC_Server(bool set)
+{
+    myTransmitter.set_RC_server(ui->tRCServer->text());
+}
+
+void MainWindow::send_RC_message(int a)
+{
+    myTransmitter.send_RemoteControl_0xAB10(ui->dial_1->value(),
+                                            ui->dial_2->value(),
+                                            ui->dial_3->value(),
+                                            ui->dial_4->value(),
+                                            ui->dial_5->value(),
+                                            ui->dial_6->value(),
+                                            ui->dial_7->value(),
+                                            ui->dial_8->value(),
+                                            0,0,0,0,0,0,0,0);
+    /*
+    qDebug() << ui->dial_1->value()
+             << "," << ui->dial_2->value()
+             << "," << ui->dial_3->value()
+             << "," << ui->dial_4->value()
+             << "," << ui->dial_5->value()
+             << "," << ui->dial_6->value()
+             << "," << ui->dial_7->value()
+             << "," << ui->dial_8->value();
+             */
 }
 
 MainWindow::~MainWindow()

@@ -56,6 +56,7 @@
 Receiver::Receiver(QWidget *parent)
     : QObject(parent)
 {
+    udpmessagehandler = new UDPMessageHandler();
 }
 void Receiver::Start()
 {
@@ -77,41 +78,54 @@ void Receiver::processPendingDatagrams()
         udpSocket->readDatagram(datagram.data(), datagram.size());
         QList<QByteArray> items = datagram.split(',');
         int message_id = items.at(0).toInt();
+
         switch(message_id)
         {
             case DIAGNOSTIC_ID:
             {
-                //qDebug() << "Matched!";
-                Diagnostic newdiag;
-                newdiag.NodeName = items.at(1).toStdString();
-                newdiag.System = items.at(2).toInt();
-                newdiag.Subsystem = items.at(3).toInt();
-                newdiag.Component = items.at(4).toInt();
-                newdiag.DiagnosticType = items.at(5).toInt();
-                newdiag.Level = items.at(6).toInt();
-
-                newdiag.Message = items.at(7).toInt();
-                newdiag.Description = items.at(8).toStdString();
-                emit new_diagnosticmessage(newdiag);
+                std::string nodename,description;
+                int system,subsystem,component,diagtype,diagmessage,level;
+                if(udpmessagehandler->decode_DiagnosticUDP(items,&nodename,&system,&subsystem,&component,&diagtype,&level,&diagmessage,&description))
+                {
+                    Diagnostic newdiag;
+                    newdiag.NodeName = nodename;
+                    newdiag.System = system;
+                    newdiag.Subsystem = subsystem;
+                    newdiag.Component = component;
+                    newdiag.DiagnosticType = diagtype;
+                    newdiag.Level = level;
+                    newdiag.Message = diagmessage;
+                    newdiag.Description = description;
+                    emit new_diagnosticmessage(newdiag);
+                }
                 break;
             }
             case DEVICE_ID:
             {
-                Device newdevice;
-                newdevice.DeviceParent = items.at(1).toStdString();
-                newdevice.DeviceName = items.at(2).toStdString();
-                newdevice.DeviceType = items.at(3).toStdString();
-                newdevice.Architecture = items.at(4).toStdString();
-                emit new_devicemessage(newdevice);
+                std::string deviceparent,devicename,devicetype,architecture;
+                if(udpmessagehandler->decode_DeviceUDP(items,&deviceparent,&devicename,&devicetype,&architecture))
+                {
+                    Device newdevice;
+                    newdevice.DeviceParent = deviceparent;
+                    newdevice.DeviceName = devicename;
+                    newdevice.DeviceType = devicetype;
+                    newdevice.Architecture = architecture;
+                    emit new_devicemessage(newdevice);
+                }
                 break;
             }
             case 0xAB11:
             {
-                Resource newresource;
-                newresource.NodeName = items.at(1).toStdString();
-                newresource.ram_used_Mb = items.at(2).toInt();
-                newresource.cpu_used_perc  = items.at(3).toInt();
-                emit new_resourcemessage(newresource);
+                std::string nodename;
+                int ram,cpu;
+                if(udpmessagehandler->decode_ResourceUDP(items,&nodename,&ram,&cpu))
+                {
+                    Resource newresource;
+                    newresource.NodeName = nodename;
+                    newresource.ram_used_Mb = ram;
+                    newresource.cpu_used_perc  = cpu;
+                    emit new_resourcemessage(newresource);
+                }
                 break;
             }
 

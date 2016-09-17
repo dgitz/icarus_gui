@@ -111,7 +111,7 @@ System</string>
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tabDiagnostics">
      <attribute name="title">
@@ -193,7 +193,7 @@ System</string>
        </property>
       </column>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -234,16 +234,179 @@ System</string>
        </item>
       </layout>
      </widget>
-     <zorder>layoutWidget</zorder>
-     <zorder>label_2</zorder>
-     <zorder>treeDeviceList</zorder>
-     <zorder>treeDeviceList</zorder>
-     <zorder></zorder>
     </widget>
     <widget class="QWidget" name="tabResources">
      <attribute name="title">
       <string>Resources</string>
      </attribute>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Remote Control</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="3">
+       <widget class="QDial" name="dial_8">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="tRCServer">
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QDial" name="dial_5">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QDial" name="dial_3">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QDial" name="dial_7">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDial" name="dial_2">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QDial" name="dial_4">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QDial" name="dial_6">
+       <property name="minimum">
+        <number>-32768</number>
+       </property>
+       <property name="maximum">
+        <number>32787</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="notchesVisible">
+        <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="bSetRCServer">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>SET</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>ROSCORE:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QDial" name="dial_1">
+        <property name="minimum">
+         <number>-32768</number>
+        </property>
+        <property name="maximum">
+         <number>32787</number>
+        </property>
+        <property name="singleStep">
+         <number>10</number>
+        </property>
+        <property name="notchesVisible">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

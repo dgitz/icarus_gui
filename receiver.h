@@ -54,6 +54,7 @@
 #include <QDialog>
 #include <QHostAddress>
 #include "helper.h"
+#include "udpmessage.h"
 QT_BEGIN_NAMESPACE
 class QLabel;
 class QPushButton;
@@ -78,6 +79,7 @@ private:
 
     QUdpSocket *udpSocket;
     QHostAddress groupAddress;
+    UDPMessageHandler *udpmessagehandler;
 
 };
 

@@ -10,6 +10,9 @@
 #include <QtCharts>
 #include <QLineSeries>
 #include <receiver.h>
+#include <transmitter.h>
+#include <QTouchEvent>
+
 
 
 using namespace QtCharts;
@@ -38,6 +41,9 @@ public slots:
     void update_devicelist(const Device &device);
     void update_devicelist();
     void update_devicelistviewer();
+    void change_RC_Server(bool set);
+
+    void send_RC_message(int);
 
 signals:
     void new_diagnosticmessage(Diagnostic);
@@ -46,6 +52,7 @@ signals:
 private:
     Ui::MainWindow *ui;
     Receiver myReceiver;
+    Transmitter myTransmitter;
    // QChart *ResourceChart;
     //QChartView *ResourceChartView;
 

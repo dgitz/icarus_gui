@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += gui
 QT += network widgets
 QT += charts
 
@@ -16,14 +17,18 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    receiver.cpp
+    receiver.cpp \
+    transmitter.cpp \
+    udpmessage.cpp
 
 HEADERS  += mainwindow.h \
     helper.h \
-    receiver.h
+    receiver.h \
+    transmitter.h \
+    udpmessage.h
 
 FORMS    += mainwindow.ui
 
+
 CONFIG += mobility
 MOBILITY = 
-
