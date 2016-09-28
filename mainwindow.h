@@ -44,6 +44,10 @@ public slots:
     void change_RC_Server(bool set);
 
     void send_RC_message(int);
+    void b1_pressed();
+    void b2_pressed();
+    void b3_pressed();
+    void b4_pressed();
 
 signals:
     void new_diagnosticmessage(Diagnostic);
@@ -57,6 +61,7 @@ private:
     //QChartView *ResourceChartView;
 
     std::vector<Device> DeviceList;
+    std::vector<int> buttons;
     QString messageviewer_filter;
 };
 

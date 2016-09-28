@@ -61,16 +61,46 @@ MainWindow::MainWindow(QWidget *parent) :
     timer_100ms->start(100);
 
     connect(ui->dial_1,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_1_horz_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_1_vert_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
     connect(ui->dial_2,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_2_horz_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    connect(ui->dial_2_vert_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
     connect(ui->dial_3,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
     connect(ui->dial_4,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_5,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_6,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_7,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_8,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
+    for(int i = 0; i < 4; i++) { buttons.push_back(0); }
+    connect(ui->b1,SIGNAL(pressed()),this,SLOT(b1_pressed()));
+    connect(ui->b2,SIGNAL(pressed()),this,SLOT(b2_pressed()));
+    connect(ui->b3,SIGNAL(pressed()),this,SLOT(b3_pressed()));
+    connect(ui->b4,SIGNAL(pressed()),this,SLOT(b4_pressed()));
 
 
 }
+void MainWindow::b1_pressed()
+{
+    if(buttons.at(0) == 0) { buttons.at(0) = 1; }
+    else { buttons.at(0) = 0; }
+    send_RC_message(0);
+}
+void MainWindow::b2_pressed()
+{
+    if(buttons.at(1) == 0) { buttons.at(1) = 1; }
+    else { buttons.at(1) = 0; }
+    send_RC_message(0);
+}
+void MainWindow::b3_pressed()
+{
+    if(buttons.at(2) == 0) { buttons.at(2) = 1; }
+    else { buttons.at(2) = 0; }
+    send_RC_message(0);
+}
+void MainWindow::b4_pressed()
+{
+    if(buttons.at(3) == 0) { buttons.at(3) = 1; }
+    else { buttons.at(3) = 0; }
+    send_RC_message(0);
+}
+
 void MainWindow::change_RC_Server(bool set)
 {
     myTransmitter.set_RC_server(ui->tRCServer->text());
@@ -79,24 +109,14 @@ void MainWindow::change_RC_Server(bool set)
 void MainWindow::send_RC_message(int a)
 {
     myTransmitter.send_RemoteControl_0xAB10(ui->dial_1->value(),
+                                            ui->dial_1_horz_slider->value(),
+                                            ui->dial_1_vert_slider->value(),
                                             ui->dial_2->value(),
+                                            ui->dial_2_horz_slider->value(),
+                                            ui->dial_2_vert_slider->value(),
                                             ui->dial_3->value(),
                                             ui->dial_4->value(),
-                                            ui->dial_5->value(),
-                                            ui->dial_6->value(),
-                                            ui->dial_7->value(),
-                                            ui->dial_8->value(),
-                                            0,0,0,0,0,0,0,0);
-    /*
-    qDebug() << ui->dial_1->value()
-             << "," << ui->dial_2->value()
-             << "," << ui->dial_3->value()
-             << "," << ui->dial_4->value()
-             << "," << ui->dial_5->value()
-             << "," << ui->dial_6->value()
-             << "," << ui->dial_7->value()
-             << "," << ui->dial_8->value();
-             */
+                                            buttons.at(0),buttons.at(1),buttons.at(2),buttons.at(3),0,0,0,0);
 }
 
 MainWindow::~MainWindow()
@@ -105,12 +125,16 @@ MainWindow::~MainWindow()
 }
 void MainWindow::stop_system(bool value)
 {
-   // QProcess::execute("ssh robot@dgitzrosmaster & ./scripts/stopSystem & exit");
-   // system("ssh robot@dgitzrosmaster & ./scripts/stopSystem & exit");
+    std::string tempstr = "ssh robot@" + ui->tRCServer->text().toStdString() + " 'cd /home/robot/; ./scripts/stopSystem -a; exit'";
+    qDebug() << QString::fromStdString(tempstr);
+    system(tempstr.c_str());
 }
 void MainWindow::launch_system(bool value)
 {
-   // QProcess::execute("ssh robot@dgitzrosmaster & ./scripts/stopSystem & exit");
+   //std::string tempstr = "ssh robot@" + ui->tRCServer->text().toStdString() + " 'cd /home/robot/; ./scripts/launchSystem; exit'";
+    std::string tempstr = "ssh robot@" + ui->tRCServer->text().toStdString() + " 'cd /home/robot/; touch abcd; exit'";
+   qDebug() << QString::fromStdString(tempstr);
+   system(tempstr.c_str());
 }
 
 void MainWindow::kill_application(bool value)
