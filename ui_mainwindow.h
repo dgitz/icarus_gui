@@ -140,8 +140,8 @@ public:
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setMinimumSize(QSize(300, 16));
-        label_2->setMaximumSize(QSize(300, 16));
+        label_2->setMinimumSize(QSize(200, 16));
+        label_2->setMaximumSize(QSize(200, 16));
         label_2->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_2->addWidget(label_2);
@@ -249,11 +249,13 @@ public:
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         b2 = new QPushButton(tab);
         b2->setObjectName(QStringLiteral("b2"));
+        b2->setMinimumSize(QSize(0, 75));
 
         gridLayout_4->addWidget(b2, 2, 1, 1, 1);
 
         dial_4 = new QDial(tab);
         dial_4->setObjectName(QStringLiteral("dial_4"));
+        dial_4->setMaximumSize(QSize(16777215, 120));
         dial_4->setMinimum(-32768);
         dial_4->setMaximum(32767);
         dial_4->setSingleStep(10);
@@ -264,11 +266,13 @@ public:
 
         b1 = new QPushButton(tab);
         b1->setObjectName(QStringLiteral("b1"));
+        b1->setMinimumSize(QSize(0, 75));
 
         gridLayout_4->addWidget(b1, 2, 0, 1, 1);
 
         b4 = new QPushButton(tab);
         b4->setObjectName(QStringLiteral("b4"));
+        b4->setMinimumSize(QSize(0, 75));
 
         gridLayout_4->addWidget(b4, 3, 1, 1, 1);
 
@@ -277,6 +281,7 @@ public:
         gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
         b3 = new QPushButton(tab);
         b3->setObjectName(QStringLiteral("b3"));
+        b3->setMinimumSize(QSize(0, 75));
 
         gridLayout_10->addWidget(b3, 2, 0, 1, 1);
 
@@ -285,6 +290,7 @@ public:
 
         dial_3 = new QDial(tab);
         dial_3->setObjectName(QStringLiteral("dial_3"));
+        dial_3->setMaximumSize(QSize(16777215, 120));
         dial_3->setMinimum(-32768);
         dial_3->setMaximum(32767);
         dial_3->setSingleStep(10);
@@ -380,7 +386,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -395,10 +401,10 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tabResources), QApplication::translate("MainWindow", "Resources", 0));
         label_3->setText(QApplication::translate("MainWindow", "V:", 0));
         label_4->setText(QApplication::translate("MainWindow", "A:", 0));
-        b2->setText(QApplication::translate("MainWindow", "PushButton", 0));
-        b1->setText(QApplication::translate("MainWindow", "PushButton", 0));
-        b4->setText(QApplication::translate("MainWindow", "PushButton", 0));
-        b3->setText(QApplication::translate("MainWindow", "PushButton", 0));
+        b2->setText(QApplication::translate("MainWindow", "B2", 0));
+        b1->setText(QApplication::translate("MainWindow", "B1", 0));
+        b4->setText(QApplication::translate("MainWindow", "B4", 0));
+        b3->setText(QApplication::translate("MainWindow", "B3", 0));
         bSetRCServer->setText(QApplication::translate("MainWindow", "SET", 0));
         label->setText(QApplication::translate("MainWindow", "ROS Core:", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Remote Control", 0));
