@@ -7,15 +7,12 @@
 #include <QTimer>
 #include <QProcess>
 #include <QTreeWidget>
-#include <QtCharts>
-#include <QLineSeries>
 #include <receiver.h>
 #include <transmitter.h>
 #include <QTouchEvent>
 
 
 
-using namespace QtCharts;
 namespace Ui {
 class MainWindow;
 }
