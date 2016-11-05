@@ -73,7 +73,7 @@ public:
 
     bool send_RemoteControl_0xAB10(int axis1,int axis2,int axis3,int axis4,int axis5,int axis6,int axis7,int axis8,
                                    int button1,int button2,int button3,int button4, int button5,int button6,int button7,int button8);
-
+    bool send_ArmControl_0xAB26(int device,int axis1,int axis2,int axis3,int axis4,int axis5,int axis6,int button1,int button2,int button3,int button4,int button5,int button6);
 
 signals:
 private:

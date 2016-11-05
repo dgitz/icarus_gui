@@ -30,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("ERROR");
     ui->comboBox->addItem("FATAL");
     ui->comboBox->setCurrentIndex(2);
+
+    ui->cArmChooser->addItem("Left Arm");
+    ui->cArmChooser->addItem("Right Arm");
    //QMainWindow window;
   // window.setCentralWidget(ResourceChartView);
    //window.resize(400,300);
@@ -74,8 +77,27 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->b3,SIGNAL(pressed()),this,SLOT(b3_pressed()));
     connect(ui->b4,SIGNAL(pressed()),this,SLOT(b4_pressed()));
 
+    connect(ui->armslider1,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
+    connect(ui->armslider2,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
+    connect(ui->armslider3,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
+    connect(ui->armslider4,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
+    connect(ui->armslider5,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
+    connect(ui->armslider6,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
+
+    connect(ui->bRTH,SIGNAL(pressed()),this,SLOT(bRTH_pressed()));
+
 
 }
+void MainWindow::bRTH_pressed()
+{
+    ui->armslider1->setValue(0);
+    ui->armslider2->setValue(0);
+    ui->armslider3->setValue(0);
+    ui->armslider4->setValue(0);
+    ui->armslider5->setValue(0);
+    ui->armslider6->setValue(0);
+}
+
 void MainWindow::b1_pressed()
 {
     if(buttons.at(0) == 0) { buttons.at(0) = 1; }
@@ -105,7 +127,22 @@ void MainWindow::change_RC_Server(bool set)
 {
     myTransmitter.set_RC_server(ui->tRCServer->text());
 }
-
+void MainWindow::send_ArmControl_message(int a)
+{
+    myTransmitter.send_ArmControl_0xAB26(0,
+                                         ui->armslider1->value(),
+                                         ui->armslider2->value(),
+                                         ui->armslider3->value(),
+                                         ui->armslider4->value(),
+                                         ui->armslider5->value(),
+                                         ui->armslider6->value(),
+                                         0,
+                                         0,
+                                         0,
+                                         0,
+                                         0,
+                                         0);
+}
 void MainWindow::send_RC_message(int a)
 {
     myTransmitter.send_RemoteControl_0xAB10(ui->dial_1->value(),

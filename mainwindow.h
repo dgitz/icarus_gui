@@ -44,10 +44,13 @@ public slots:
     void change_RC_Server(bool set);
 
     void send_RC_message(int);
+    void send_ArmControl_message(int);
     void b1_pressed();
     void b2_pressed();
     void b3_pressed();
     void b4_pressed();
+
+    void bRTH_pressed();
 
 signals:
     void new_diagnosticmessage(Diagnostic);

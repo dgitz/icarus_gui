@@ -23,6 +23,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextBrowser>
@@ -75,6 +76,15 @@ public:
     QPushButton *bSetRCServer;
     QLineEdit *tRCServer;
     QLabel *label;
+    QWidget *tab_2;
+    QComboBox *cArmChooser;
+    QScrollBar *armslider1;
+    QScrollBar *armslider2;
+    QScrollBar *armslider3;
+    QScrollBar *armslider5;
+    QScrollBar *armslider6;
+    QScrollBar *armslider4;
+    QPushButton *bRTH;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *bLaunchSystem;
@@ -350,6 +360,51 @@ public:
         gridLayout->addWidget(label, 0, 1, 1, 1);
 
         tabWidget->addTab(tab, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        cArmChooser = new QComboBox(tab_2);
+        cArmChooser->setObjectName(QStringLiteral("cArmChooser"));
+        cArmChooser->setGeometry(QRect(10, 20, 231, 23));
+        armslider1 = new QScrollBar(tab_2);
+        armslider1->setObjectName(QStringLiteral("armslider1"));
+        armslider1->setGeometry(QRect(30, 100, 81, 261));
+        armslider1->setMinimum(-32768);
+        armslider1->setMaximum(32767);
+        armslider1->setOrientation(Qt::Vertical);
+        armslider2 = new QScrollBar(tab_2);
+        armslider2->setObjectName(QStringLiteral("armslider2"));
+        armslider2->setGeometry(QRect(120, 100, 81, 261));
+        armslider2->setMinimum(-32768);
+        armslider2->setMaximum(32767);
+        armslider2->setOrientation(Qt::Vertical);
+        armslider3 = new QScrollBar(tab_2);
+        armslider3->setObjectName(QStringLiteral("armslider3"));
+        armslider3->setGeometry(QRect(210, 100, 81, 261));
+        armslider3->setMinimum(-32768);
+        armslider3->setMaximum(32767);
+        armslider3->setOrientation(Qt::Vertical);
+        armslider5 = new QScrollBar(tab_2);
+        armslider5->setObjectName(QStringLiteral("armslider5"));
+        armslider5->setGeometry(QRect(390, 100, 81, 261));
+        armslider5->setMinimum(-32768);
+        armslider5->setMaximum(32767);
+        armslider5->setOrientation(Qt::Vertical);
+        armslider6 = new QScrollBar(tab_2);
+        armslider6->setObjectName(QStringLiteral("armslider6"));
+        armslider6->setGeometry(QRect(480, 100, 81, 261));
+        armslider6->setMinimum(-32768);
+        armslider6->setMaximum(32767);
+        armslider6->setOrientation(Qt::Vertical);
+        armslider4 = new QScrollBar(tab_2);
+        armslider4->setObjectName(QStringLiteral("armslider4"));
+        armslider4->setGeometry(QRect(300, 100, 81, 261));
+        armslider4->setMinimum(-32768);
+        armslider4->setMaximum(32767);
+        armslider4->setOrientation(Qt::Vertical);
+        bRTH = new QPushButton(tab_2);
+        bRTH->setObjectName(QStringLiteral("bRTH"));
+        bRTH->setGeometry(QRect(270, 20, 181, 23));
+        tabWidget->addTab(tab_2, QString());
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(20, 440, 911, 41));
@@ -386,7 +441,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -408,6 +463,8 @@ public:
         bSetRCServer->setText(QApplication::translate("MainWindow", "SET", 0));
         label->setText(QApplication::translate("MainWindow", "ROS Core:", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Remote Control", 0));
+        bRTH->setText(QApplication::translate("MainWindow", "Return To Home", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Arm", 0));
         bLaunchSystem->setText(QApplication::translate("MainWindow", "Launch System", 0));
         bStopSystem->setText(QApplication::translate("MainWindow", "Stop System", 0));
         bCLOSE->setText(QApplication::translate("MainWindow", "CLOSE", 0));

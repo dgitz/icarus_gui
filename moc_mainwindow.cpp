@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[24];
-    char stringdata0[342];
+    QByteArrayData data[26];
+    char stringdata0[379];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,10 +49,12 @@ QT_MOC_LITERAL(16, 237, 23), // "update_devicelistviewer"
 QT_MOC_LITERAL(17, 261, 16), // "change_RC_Server"
 QT_MOC_LITERAL(18, 278, 3), // "set"
 QT_MOC_LITERAL(19, 282, 15), // "send_RC_message"
-QT_MOC_LITERAL(20, 298, 10), // "b1_pressed"
-QT_MOC_LITERAL(21, 309, 10), // "b2_pressed"
-QT_MOC_LITERAL(22, 320, 10), // "b3_pressed"
-QT_MOC_LITERAL(23, 331, 10) // "b4_pressed"
+QT_MOC_LITERAL(20, 298, 23), // "send_ArmControl_message"
+QT_MOC_LITERAL(21, 322, 10), // "b1_pressed"
+QT_MOC_LITERAL(22, 333, 10), // "b2_pressed"
+QT_MOC_LITERAL(23, 344, 10), // "b3_pressed"
+QT_MOC_LITERAL(24, 355, 10), // "b4_pressed"
+QT_MOC_LITERAL(25, 366, 12) // "bRTH_pressed"
 
     },
     "MainWindow\0new_diagnosticmessage\0\0"
@@ -63,8 +65,9 @@ QT_MOC_LITERAL(23, 331, 10) // "b4_pressed"
     "clearfilter_messageviewer\0update_devicelist\0"
     "device\0update_devicelistviewer\0"
     "change_RC_Server\0set\0send_RC_message\0"
-    "b1_pressed\0b2_pressed\0b3_pressed\0"
-    "b4_pressed"
+    "send_ArmControl_message\0b1_pressed\0"
+    "b2_pressed\0b3_pressed\0b4_pressed\0"
+    "bRTH_pressed"
 };
 #undef QT_MOC_LITERAL
 
@@ -74,7 +77,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -82,27 +85,29 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  109,    2, 0x06 /* Public */,
-       4,    1,  112,    2, 0x06 /* Public */,
+       1,    1,  119,    2, 0x06 /* Public */,
+       4,    1,  122,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,  115,    2, 0x0a /* Public */,
-       8,    1,  118,    2, 0x0a /* Public */,
-       9,    1,  121,    2, 0x0a /* Public */,
-      10,    1,  124,    2, 0x0a /* Public */,
-      11,    1,  127,    2, 0x0a /* Public */,
-      12,    0,  130,    2, 0x0a /* Public */,
-      13,    0,  131,    2, 0x0a /* Public */,
-      14,    1,  132,    2, 0x0a /* Public */,
-      14,    1,  135,    2, 0x0a /* Public */,
-      14,    0,  138,    2, 0x0a /* Public */,
-      16,    0,  139,    2, 0x0a /* Public */,
-      17,    1,  140,    2, 0x0a /* Public */,
-      19,    1,  143,    2, 0x0a /* Public */,
-      20,    0,  146,    2, 0x0a /* Public */,
-      21,    0,  147,    2, 0x0a /* Public */,
-      22,    0,  148,    2, 0x0a /* Public */,
-      23,    0,  149,    2, 0x0a /* Public */,
+       6,    1,  125,    2, 0x0a /* Public */,
+       8,    1,  128,    2, 0x0a /* Public */,
+       9,    1,  131,    2, 0x0a /* Public */,
+      10,    1,  134,    2, 0x0a /* Public */,
+      11,    1,  137,    2, 0x0a /* Public */,
+      12,    0,  140,    2, 0x0a /* Public */,
+      13,    0,  141,    2, 0x0a /* Public */,
+      14,    1,  142,    2, 0x0a /* Public */,
+      14,    1,  145,    2, 0x0a /* Public */,
+      14,    0,  148,    2, 0x0a /* Public */,
+      16,    0,  149,    2, 0x0a /* Public */,
+      17,    1,  150,    2, 0x0a /* Public */,
+      19,    1,  153,    2, 0x0a /* Public */,
+      20,    1,  156,    2, 0x0a /* Public */,
+      21,    0,  159,    2, 0x0a /* Public */,
+      22,    0,  160,    2, 0x0a /* Public */,
+      23,    0,  161,    2, 0x0a /* Public */,
+      24,    0,  162,    2, 0x0a /* Public */,
+      25,    0,  163,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -122,6 +127,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   18,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -151,10 +158,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->update_devicelistviewer(); break;
         case 13: _t->change_RC_Server((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 14: _t->send_RC_message((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 15: _t->b1_pressed(); break;
-        case 16: _t->b2_pressed(); break;
-        case 17: _t->b3_pressed(); break;
-        case 18: _t->b4_pressed(); break;
+        case 15: _t->send_ArmControl_message((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->b1_pressed(); break;
+        case 17: _t->b2_pressed(); break;
+        case 18: _t->b3_pressed(); break;
+        case 19: _t->b4_pressed(); break;
+        case 20: _t->bRTH_pressed(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -202,13 +211,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 21)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 19;
+        _id -= 21;
     }
     return _id;
 }
