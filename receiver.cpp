@@ -78,16 +78,24 @@ void Receiver::processPendingDatagrams()
         udpSocket->readDatagram(datagram.data(), datagram.size());
         QList<QByteArray> items = datagram.split(',');
         int message_id = items.at(0).toInt();
-
         switch(message_id)
         {
+            case ARM_STATUS_ID:
+            {
+                int state;
+                if(udpmessagehandler->decode_Arm_StatusUDP(items,&state))
+                {
+                    emit new_armedstatusmessage(state);
+                }
+            }
             case DIAGNOSTIC_ID:
             {
-                std::string nodename,description;
+                std::string devicename,nodename,description;
                 int system,subsystem,component,diagtype,diagmessage,level;
-                if(udpmessagehandler->decode_DiagnosticUDP(items,&nodename,&system,&subsystem,&component,&diagtype,&level,&diagmessage,&description))
+                if(udpmessagehandler->decode_DiagnosticUDP(items,&devicename,&nodename,&system,&subsystem,&component,&diagtype,&level,&diagmessage,&description))
                 {
                     Diagnostic newdiag;
+                    newdiag.DeviceName = devicename;
                     newdiag.NodeName = nodename;
                     newdiag.System = system;
                     newdiag.Subsystem = subsystem;
@@ -114,7 +122,7 @@ void Receiver::processPendingDatagrams()
                 }
                 break;
             }
-            case 0xAB11:
+            case RESOURCE_ID:
             {
                 std::string nodename;
                 int ram,cpu;

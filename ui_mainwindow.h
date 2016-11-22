@@ -76,6 +76,7 @@ public:
     QPushButton *bSetRCServer;
     QLineEdit *tRCServer;
     QLabel *label;
+    QPushButton *bArmDisarm;
     QWidget *tab_2;
     QComboBox *cArmChooser;
     QScrollBar *armslider1;
@@ -359,6 +360,12 @@ public:
 
         gridLayout->addWidget(label, 0, 1, 1, 1);
 
+        bArmDisarm = new QPushButton(tab);
+        bArmDisarm->setObjectName(QStringLiteral("bArmDisarm"));
+        bArmDisarm->setMinimumSize(QSize(0, 60));
+
+        gridLayout->addWidget(bArmDisarm, 0, 0, 1, 1);
+
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -441,7 +448,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -462,6 +469,7 @@ public:
         b3->setText(QApplication::translate("MainWindow", "B3", 0));
         bSetRCServer->setText(QApplication::translate("MainWindow", "SET", 0));
         label->setText(QApplication::translate("MainWindow", "ROS Core:", 0));
+        bArmDisarm->setText(QApplication::translate("MainWindow", "UNDEFINED", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Remote Control", 0));
         bRTH->setText(QApplication::translate("MainWindow", "Return To Home", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Arm", 0));

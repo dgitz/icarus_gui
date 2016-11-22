@@ -12,7 +12,7 @@ struct Resource
 
 struct Diagnostic
 {
-
+    std::string DeviceName;
     std::string NodeName;
     int System;
     int Subsystem;

@@ -1915,22 +1915,7 @@ main.o: main.cpp mainwindow.h \
 		../../../Qt/5.7/gcc_64/include/QtGui/QTouchEvent \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QDial \
-		ui_mainwindow.h \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QAction \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QComboBox \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QLCDNumber \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QScrollBar \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QSlider \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QTabWidget \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QVBoxLayout
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -2466,24 +2451,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		udpmessage.h \
 		transmitter.h \
 		../../../Qt/5.7/gcc_64/include/QtGui/QTouchEvent \
-		ui_mainwindow.h \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QAction \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QComboBox \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QDial \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QLCDNumber \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QScrollBar \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QSlider \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QTabWidget \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
-		../../../Qt/5.7/gcc_64/include/QtWidgets/QVBoxLayout
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 receiver.o: receiver.cpp ../../../Qt/5.7/gcc_64/include/QtWidgets/QtWidgets \

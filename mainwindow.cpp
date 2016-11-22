@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     std::string default_ROSCORE = "10.0.0.111";
+    armdisarm_command = ARMEDCOMMAND_DISARM;
+    armdisarm_state = ARMEDSTATUS_DISARMED_CANNOTARM;
     /*chart->legend()->hide();
     chart->addSeries(series);
     chart->createDefaultAxes();
@@ -23,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //ResourceChartView = new QChartView(ResourceChart);
     //ResourceChartView->setRenderHint(QPainter::Antialiasing);
     ui->setupUi(this);
+    ui->bArmDisarm->setText("UNDEFINED");
     ui->comboBox->addItem("DEBUG");
     ui->comboBox->addItem("INFO");
     ui->comboBox->addItem("NOTICE");
@@ -45,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     myReceiver.Start();
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_messageviewer(Diagnostic)));
+    connect(&myReceiver,SIGNAL(new_armedstatusmessage(int)),this,SLOT(update_armeddisarmed_text(int)));
     connect(ui->bCLOSE,SIGNAL(clicked(bool)),this,SLOT(kill_application(bool)));
     connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(clear_messageviewer(QString)));
     connect(ui->treeDeviceList,SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),this,SLOT(changefilter_messageviewer()));
@@ -76,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->b2,SIGNAL(pressed()),this,SLOT(b2_pressed()));
     connect(ui->b3,SIGNAL(pressed()),this,SLOT(b3_pressed()));
     connect(ui->b4,SIGNAL(pressed()),this,SLOT(b4_pressed()));
+    connect(ui->bArmDisarm,SIGNAL(pressed()),this,SLOT(bArmDisarm_pressed()));
 
     connect(ui->armslider1,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
     connect(ui->armslider2,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
@@ -97,12 +102,18 @@ void MainWindow::bRTH_pressed()
     ui->armslider5->setValue(0);
     ui->armslider6->setValue(0);
 }
+void MainWindow::bArmDisarm_pressed()
+{
+    if(armdisarm_command == ARMEDCOMMAND_DISARM) { armdisarm_command = ARMEDCOMMAND_ARM; }
+    else { armdisarm_command = ARMEDCOMMAND_DISARM; }
+    send_Arm_Command_message(armdisarm_command);
+}
 
 void MainWindow::b1_pressed()
 {
     if(buttons.at(0) == 0) { buttons.at(0) = 1; }
     else { buttons.at(0) = 0; }
-    send_RC_message(0);
+     send_RC_message(0);
 }
 void MainWindow::b2_pressed()
 {
@@ -155,6 +166,10 @@ void MainWindow::send_RC_message(int a)
                                             ui->dial_4->value(),
                                             buttons.at(0),buttons.at(1),buttons.at(2),buttons.at(3),0,0,0,0);
 }
+void MainWindow::send_Arm_Command_message(int a)
+{
+    myTransmitter.send_ArmCommand_0xab27(armdisarm_command);
+}
 
 MainWindow::~MainWindow()
 {
@@ -196,6 +211,20 @@ void MainWindow::clearfilter_messageviewer()
 {
     messageviewer_filter = "";
     ui->textBrowser->clear();
+}
+void MainWindow::update_armeddisarmed_text(int value)
+{
+    QString tempstr;
+     switch (value)
+     {
+        case ARMEDSTATUS_ARMED: tempstr = "ARMED"; break;
+         case ARMEDSTATUS_ARMING: tempstr = "ARMING"; break;
+         case ARMEDSTATUS_DISARMED: tempstr = "DISARMING"; break;
+         case ARMEDSTATUS_DISARMED_CANNOTARM: tempstr = "DISARMING\nCANNOT ARM"; break;
+         case ARMEDSTATUS_DISARMING: tempstr = "DISARMING"; break;
+         case ARMEDSTATUS_UNDEFINED: tempstr = "UNDEFINED";
+     }
+     ui->bArmDisarm->setText(tempstr);
 }
 
 void MainWindow::update_devicelist()

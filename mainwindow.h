@@ -31,6 +31,7 @@ public:
 
 public slots:
     void update_messageviewer(const Diagnostic &diag);
+    void update_armeddisarmed_text(const int);
     void kill_application(const bool);
     void stop_system(const bool);
     void launch_system(const bool);
@@ -45,6 +46,8 @@ public slots:
 
     void send_RC_message(int);
     void send_ArmControl_message(int);
+    void send_Arm_Command_message(int);
+    void bArmDisarm_pressed();
     void b1_pressed();
     void b2_pressed();
     void b3_pressed();
@@ -66,6 +69,9 @@ private:
     std::vector<Device> DeviceList;
     std::vector<int> buttons;
     QString messageviewer_filter;
+
+    int armdisarm_command;
+    int armdisarm_state;
 };
 
 #endif // MAINWINDOW_H

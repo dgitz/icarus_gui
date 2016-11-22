@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Receiver_t {
-    QByteArrayData data[9];
-    char stringdata0[121];
+    QByteArrayData data[10];
+    char stringdata0[144];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,13 +37,14 @@ QT_MOC_LITERAL(4, 43, 17), // "new_devicemessage"
 QT_MOC_LITERAL(5, 61, 6), // "Device"
 QT_MOC_LITERAL(6, 68, 19), // "new_resourcemessage"
 QT_MOC_LITERAL(7, 88, 8), // "Resource"
-QT_MOC_LITERAL(8, 97, 23) // "processPendingDatagrams"
+QT_MOC_LITERAL(8, 97, 22), // "new_armedstatusmessage"
+QT_MOC_LITERAL(9, 120, 23) // "processPendingDatagrams"
 
     },
     "Receiver\0new_diagnosticmessage\0\0"
     "Diagnostic\0new_devicemessage\0Device\0"
     "new_resourcemessage\0Resource\0"
-    "processPendingDatagrams"
+    "new_armedstatusmessage\0processPendingDatagrams"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,25 +54,27 @@ static const uint qt_meta_data_Receiver[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x06 /* Public */,
-       4,    1,   37,    2, 0x06 /* Public */,
-       6,    1,   40,    2, 0x06 /* Public */,
+       1,    1,   39,    2, 0x06 /* Public */,
+       4,    1,   42,    2, 0x06 /* Public */,
+       6,    1,   45,    2, 0x06 /* Public */,
+       8,    1,   48,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   43,    2, 0x08 /* Private */,
+       9,    0,   51,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
     QMetaType::Void, 0x80000000 | 5,    2,
     QMetaType::Void, 0x80000000 | 7,    2,
+    QMetaType::Void, QMetaType::Int,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -88,7 +91,8 @@ void Receiver::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 0: _t->new_diagnosticmessage((*reinterpret_cast< const Diagnostic(*)>(_a[1]))); break;
         case 1: _t->new_devicemessage((*reinterpret_cast< const Device(*)>(_a[1]))); break;
         case 2: _t->new_resourcemessage((*reinterpret_cast< const Resource(*)>(_a[1]))); break;
-        case 3: _t->processPendingDatagrams(); break;
+        case 3: _t->new_armedstatusmessage((*reinterpret_cast< const int(*)>(_a[1]))); break;
+        case 4: _t->processPendingDatagrams(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -112,6 +116,13 @@ void Receiver::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             typedef void (Receiver::*_t)(const Resource & );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Receiver::new_resourcemessage)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            typedef void (Receiver::*_t)(const int & );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Receiver::new_armedstatusmessage)) {
+                *result = 3;
                 return;
             }
         }
@@ -143,13 +154,13 @@ int Receiver::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
@@ -173,5 +184,12 @@ void Receiver::new_resourcemessage(const Resource & _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void Receiver::new_armedstatusmessage(const int & _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_END_MOC_NAMESPACE

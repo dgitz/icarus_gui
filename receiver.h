@@ -75,6 +75,7 @@ signals:
     void new_diagnosticmessage(const Diagnostic&);
     void new_devicemessage(const Device&);
     void new_resourcemessage(const Resource&);
+    void new_armedstatusmessage(const int&);
 private:
 
     QUdpSocket *udpSocket;
