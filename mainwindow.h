@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QString>
 #include <QDateTime>
+#include <QNetworkInterface>
 #include <QTimer>
 #include <QProcess>
 #include <QTreeWidget>
@@ -12,6 +13,7 @@
 #include <receiver.h>
 #include <transmitter.h>
 #include <QTouchEvent>
+#include <QHostInfo>
 
 
 
@@ -47,6 +49,7 @@ public slots:
     void send_RC_message(int);
     void send_ArmControl_message(int);
     void send_Arm_Command_message(int);
+    void send_Heartbeat_message();
     void bArmDisarm_pressed();
     void b1_pressed();
     void b2_pressed();
@@ -69,7 +72,7 @@ private:
     std::vector<Device> DeviceList;
     std::vector<int> buttons;
     QString messageviewer_filter;
-
+    QString DeviceName;
     int armdisarm_command;
     int armdisarm_state;
 };

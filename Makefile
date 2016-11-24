@@ -703,6 +703,10 @@ moc_mainwindow.cpp: ../../../Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.7/gcc_64/include/QtCore/QString \
 		../../../Qt/5.7/gcc_64/include/QtCore/QDateTime \
 		../../../Qt/5.7/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/QNetworkInterface \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qnetworkinterface.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qabstractsocket.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.7/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/qbasictimer.h \
@@ -1124,14 +1128,14 @@ moc_mainwindow.cpp: ../../../Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		receiver.h \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/5.7/gcc_64/include/QtNetwork/QHostAddress \
-		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
-		../../../Qt/5.7/gcc_64/include/QtNetwork/qabstractsocket.h \
 		helper.h \
 		/home/robot/catkin_ws/src/icarus_rover_v2/include/Definitions.h \
 		../../../catkin_ws/src/icarus_rover_v2/include/eROS_Definitions.h \
 		udpmessage.h \
 		transmitter.h \
 		../../../Qt/5.7/gcc_64/include/QtGui/QTouchEvent \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/QHostInfo \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostinfo.h \
 		mainwindow.h \
 		../../../Qt/5.7/gcc_64/bin/moc
 	/home/robot/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/robot/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/robot/gui/Diagnostics_GUI/Diagnostics_GUI -I/home/robot/Qt/5.7/gcc_64/include -I/home/robot/Qt/5.7/gcc_64/include/QtCharts -I/home/robot/Qt/5.7/gcc_64/include/QtWidgets -I/home/robot/Qt/5.7/gcc_64/include/QtGui -I/home/robot/Qt/5.7/gcc_64/include/QtNetwork -I/home/robot/Qt/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
@@ -1484,6 +1488,10 @@ main.o: main.cpp mainwindow.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/QString \
 		../../../Qt/5.7/gcc_64/include/QtCore/QDateTime \
 		../../../Qt/5.7/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/QNetworkInterface \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qnetworkinterface.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qabstractsocket.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.7/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/qbasictimer.h \
@@ -1905,14 +1913,14 @@ main.o: main.cpp mainwindow.h \
 		receiver.h \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/5.7/gcc_64/include/QtNetwork/QHostAddress \
-		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
-		../../../Qt/5.7/gcc_64/include/QtNetwork/qabstractsocket.h \
 		helper.h \
 		/home/robot/catkin_ws/src/icarus_rover_v2/include/Definitions.h \
 		../../../catkin_ws/src/icarus_rover_v2/include/eROS_Definitions.h \
 		udpmessage.h \
 		transmitter.h \
 		../../../Qt/5.7/gcc_64/include/QtGui/QTouchEvent \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/QHostInfo \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostinfo.h \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QDial \
 		ui_mainwindow.h
@@ -2022,6 +2030,10 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/QString \
 		../../../Qt/5.7/gcc_64/include/QtCore/QDateTime \
 		../../../Qt/5.7/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/QNetworkInterface \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qnetworkinterface.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qabstractsocket.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.7/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.7/gcc_64/include/QtCore/qbasictimer.h \
@@ -2443,14 +2455,14 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		receiver.h \
 		../../../Qt/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/5.7/gcc_64/include/QtNetwork/QHostAddress \
-		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
-		../../../Qt/5.7/gcc_64/include/QtNetwork/qabstractsocket.h \
 		helper.h \
 		/home/robot/catkin_ws/src/icarus_rover_v2/include/Definitions.h \
 		../../../catkin_ws/src/icarus_rover_v2/include/eROS_Definitions.h \
 		udpmessage.h \
 		transmitter.h \
 		../../../Qt/5.7/gcc_64/include/QtGui/QTouchEvent \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/QHostInfo \
+		../../../Qt/5.7/gcc_64/include/QtNetwork/qhostinfo.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 

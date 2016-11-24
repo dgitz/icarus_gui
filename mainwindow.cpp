@@ -8,6 +8,23 @@ MainWindow::MainWindow(QWidget *parent) :
     std::string default_ROSCORE = "10.0.0.111";
     armdisarm_command = ARMEDCOMMAND_DISARM;
     armdisarm_state = ARMEDSTATUS_DISARMED_CANNOTARM;
+
+    QList<QHostAddress> list = QNetworkInterface::allAddresses();
+
+    for(int i = 0; i <list.count();i++)
+    {
+        if(!list[i].isLoopback())
+        {
+            if(list[i].protocol() == QAbstractSocket::IPv4Protocol)
+            {
+                //qDebug() << list[i].toString();
+                DeviceName = "UI_" + list[i].toString();
+                break;
+            }
+        }
+    }
+
+
     /*chart->legend()->hide();
     chart->addSeries(series);
     chart->createDefaultAxes();
@@ -65,6 +82,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer_100ms = new QTimer(this);
     connect(timer_100ms,SIGNAL(timeout()),this,SLOT(update_devicelistviewer()));
+    connect(timer_100ms,SIGNAL(timeout()),this,SLOT(send_Heartbeat_message()));
     timer_100ms->start(100);
 
     connect(ui->dial_1,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
@@ -154,6 +172,15 @@ void MainWindow::send_ArmControl_message(int a)
                                          0,
                                          0);
 }
+void MainWindow::send_Heartbeat_message()
+{
+    //qDebug() << "Name: " << DeviceName;
+    QDateTime currentdatetime = QDateTime::currentDateTime();
+    quint64 unixtime = currentdatetime.toMSecsSinceEpoch();
+    quint64 unixtime2 = unixtime + 100; //Should be 100 mS into the future
+    myTransmitter.send_Heartbeat_0xAB31(DeviceName.toStdString(),unixtime,unixtime2);
+}
+
 void MainWindow::send_RC_message(int a)
 {
     myTransmitter.send_RemoteControl_0xAB10(ui->dial_1->value(),
@@ -168,7 +195,7 @@ void MainWindow::send_RC_message(int a)
 }
 void MainWindow::send_Arm_Command_message(int a)
 {
-    myTransmitter.send_ArmCommand_0xab27(armdisarm_command);
+    myTransmitter.send_ArmCommand_0xAB27(armdisarm_command);
 }
 
 MainWindow::~MainWindow()
@@ -178,14 +205,14 @@ MainWindow::~MainWindow()
 void MainWindow::stop_system(bool value)
 {
     std::string tempstr = "ssh robot@" + ui->tRCServer->text().toStdString() + " 'cd /home/robot/; ./scripts/stopSystem -a; exit'";
-    qDebug() << QString::fromStdString(tempstr);
+    //qDebug() << QString::fromStdString(tempstr);
     system(tempstr.c_str());
 }
 void MainWindow::launch_system(bool value)
 {
    //std::string tempstr = "ssh robot@" + ui->tRCServer->text().toStdString() + " 'cd /home/robot/; ./scripts/launchSystem; exit'";
     std::string tempstr = "ssh robot@" + ui->tRCServer->text().toStdString() + " 'cd /home/robot/; touch abcd; exit'";
-   qDebug() << QString::fromStdString(tempstr);
+   //qDebug() << QString::fromStdString(tempstr);
    system(tempstr.c_str());
 }
 
@@ -198,7 +225,7 @@ void MainWindow::changefilter_messageviewer()
     QString item = ui->treeDeviceList->currentItem()->text(0);
     messageviewer_filter = item;
     ui->textBrowser->clear();
-    qDebug() << "changing filter to: " << item;
+   //qDebug() << "changing filter to: " << item;
 
    // qDebug() << " new: " << newitem.text(0);
 }
@@ -219,7 +246,7 @@ void MainWindow::update_armeddisarmed_text(int value)
      {
         case ARMEDSTATUS_ARMED: tempstr = "ARMED"; break;
          case ARMEDSTATUS_ARMING: tempstr = "ARMING"; break;
-         case ARMEDSTATUS_DISARMED: tempstr = "DISARMING"; break;
+         case ARMEDSTATUS_DISARMED: tempstr = "DISARMED"; break;
          case ARMEDSTATUS_DISARMED_CANNOTARM: tempstr = "DISARMING\nCANNOT ARM"; break;
          case ARMEDSTATUS_DISARMING: tempstr = "DISARMING"; break;
          case ARMEDSTATUS_UNDEFINED: tempstr = "UNDEFINED";

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[29];
-    char stringdata0[449];
+    QByteArrayData data[30];
+    char stringdata0[472];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,12 +52,13 @@ QT_MOC_LITERAL(19, 304, 3), // "set"
 QT_MOC_LITERAL(20, 308, 15), // "send_RC_message"
 QT_MOC_LITERAL(21, 324, 23), // "send_ArmControl_message"
 QT_MOC_LITERAL(22, 348, 24), // "send_Arm_Command_message"
-QT_MOC_LITERAL(23, 373, 18), // "bArmDisarm_pressed"
-QT_MOC_LITERAL(24, 392, 10), // "b1_pressed"
-QT_MOC_LITERAL(25, 403, 10), // "b2_pressed"
-QT_MOC_LITERAL(26, 414, 10), // "b3_pressed"
-QT_MOC_LITERAL(27, 425, 10), // "b4_pressed"
-QT_MOC_LITERAL(28, 436, 12) // "bRTH_pressed"
+QT_MOC_LITERAL(23, 373, 22), // "send_Heartbeat_message"
+QT_MOC_LITERAL(24, 396, 18), // "bArmDisarm_pressed"
+QT_MOC_LITERAL(25, 415, 10), // "b1_pressed"
+QT_MOC_LITERAL(26, 426, 10), // "b2_pressed"
+QT_MOC_LITERAL(27, 437, 10), // "b3_pressed"
+QT_MOC_LITERAL(28, 448, 10), // "b4_pressed"
+QT_MOC_LITERAL(29, 459, 12) // "bRTH_pressed"
 
     },
     "MainWindow\0new_diagnosticmessage\0\0"
@@ -70,7 +71,8 @@ QT_MOC_LITERAL(28, 436, 12) // "bRTH_pressed"
     "device\0update_devicelistviewer\0"
     "change_RC_Server\0set\0send_RC_message\0"
     "send_ArmControl_message\0"
-    "send_Arm_Command_message\0bArmDisarm_pressed\0"
+    "send_Arm_Command_message\0"
+    "send_Heartbeat_message\0bArmDisarm_pressed\0"
     "b1_pressed\0b2_pressed\0b3_pressed\0"
     "b4_pressed\0bRTH_pressed"
 };
@@ -82,7 +84,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -90,32 +92,33 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  134,    2, 0x06 /* Public */,
-       4,    1,  137,    2, 0x06 /* Public */,
+       1,    1,  139,    2, 0x06 /* Public */,
+       4,    1,  142,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,  140,    2, 0x0a /* Public */,
-       8,    1,  143,    2, 0x0a /* Public */,
-       9,    1,  146,    2, 0x0a /* Public */,
-      10,    1,  149,    2, 0x0a /* Public */,
-      11,    1,  152,    2, 0x0a /* Public */,
-      12,    1,  155,    2, 0x0a /* Public */,
-      13,    0,  158,    2, 0x0a /* Public */,
-      14,    0,  159,    2, 0x0a /* Public */,
-      15,    1,  160,    2, 0x0a /* Public */,
-      15,    1,  163,    2, 0x0a /* Public */,
-      15,    0,  166,    2, 0x0a /* Public */,
-      17,    0,  167,    2, 0x0a /* Public */,
-      18,    1,  168,    2, 0x0a /* Public */,
-      20,    1,  171,    2, 0x0a /* Public */,
-      21,    1,  174,    2, 0x0a /* Public */,
-      22,    1,  177,    2, 0x0a /* Public */,
-      23,    0,  180,    2, 0x0a /* Public */,
-      24,    0,  181,    2, 0x0a /* Public */,
-      25,    0,  182,    2, 0x0a /* Public */,
-      26,    0,  183,    2, 0x0a /* Public */,
-      27,    0,  184,    2, 0x0a /* Public */,
-      28,    0,  185,    2, 0x0a /* Public */,
+       6,    1,  145,    2, 0x0a /* Public */,
+       8,    1,  148,    2, 0x0a /* Public */,
+       9,    1,  151,    2, 0x0a /* Public */,
+      10,    1,  154,    2, 0x0a /* Public */,
+      11,    1,  157,    2, 0x0a /* Public */,
+      12,    1,  160,    2, 0x0a /* Public */,
+      13,    0,  163,    2, 0x0a /* Public */,
+      14,    0,  164,    2, 0x0a /* Public */,
+      15,    1,  165,    2, 0x0a /* Public */,
+      15,    1,  168,    2, 0x0a /* Public */,
+      15,    0,  171,    2, 0x0a /* Public */,
+      17,    0,  172,    2, 0x0a /* Public */,
+      18,    1,  173,    2, 0x0a /* Public */,
+      20,    1,  176,    2, 0x0a /* Public */,
+      21,    1,  179,    2, 0x0a /* Public */,
+      22,    1,  182,    2, 0x0a /* Public */,
+      23,    0,  185,    2, 0x0a /* Public */,
+      24,    0,  186,    2, 0x0a /* Public */,
+      25,    0,  187,    2, 0x0a /* Public */,
+      26,    0,  188,    2, 0x0a /* Public */,
+      27,    0,  189,    2, 0x0a /* Public */,
+      28,    0,  190,    2, 0x0a /* Public */,
+      29,    0,  191,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -138,6 +141,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -172,12 +176,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 15: _t->send_RC_message((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 16: _t->send_ArmControl_message((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 17: _t->send_Arm_Command_message((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 18: _t->bArmDisarm_pressed(); break;
-        case 19: _t->b1_pressed(); break;
-        case 20: _t->b2_pressed(); break;
-        case 21: _t->b3_pressed(); break;
-        case 22: _t->b4_pressed(); break;
-        case 23: _t->bRTH_pressed(); break;
+        case 18: _t->send_Heartbeat_message(); break;
+        case 19: _t->bArmDisarm_pressed(); break;
+        case 20: _t->b1_pressed(); break;
+        case 21: _t->b2_pressed(); break;
+        case 22: _t->b3_pressed(); break;
+        case 23: _t->b4_pressed(); break;
+        case 24: _t->bRTH_pressed(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -225,13 +230,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 25;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 25)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 25;
     }
     return _id;
 }
