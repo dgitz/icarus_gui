@@ -57,6 +57,7 @@ Receiver::Receiver(QWidget *parent)
     : QObject(parent)
 {
     udpmessagehandler = new UDPMessageHandler();
+    lastcomm_timer.restart();
 }
 void Receiver::Start()
 {
@@ -85,6 +86,7 @@ void Receiver::processPendingDatagrams()
                 int state;
                 if(udpmessagehandler->decode_Arm_StatusUDP(items,&state))
                 {
+                    lastcomm_timer.restart();
                     emit new_armedstatusmessage(state);
                 }
             }
@@ -94,6 +96,7 @@ void Receiver::processPendingDatagrams()
                 int system,subsystem,component,diagtype,diagmessage,level;
                 if(udpmessagehandler->decode_DiagnosticUDP(items,&devicename,&nodename,&system,&subsystem,&component,&diagtype,&level,&diagmessage,&description))
                 {
+                    lastcomm_timer.restart();
                     Diagnostic newdiag;
                     newdiag.DeviceName = devicename;
                     newdiag.NodeName = nodename;
@@ -113,6 +116,7 @@ void Receiver::processPendingDatagrams()
                 std::string deviceparent,devicename,devicetype,architecture;
                 if(udpmessagehandler->decode_DeviceUDP(items,&deviceparent,&devicename,&devicetype,&architecture))
                 {
+                    lastcomm_timer.restart();
                     Device newdevice;
                     newdevice.DeviceParent = deviceparent;
                     newdevice.DeviceName = devicename;
@@ -128,6 +132,7 @@ void Receiver::processPendingDatagrams()
                 int ram,cpu;
                 if(udpmessagehandler->decode_ResourceUDP(items,&nodename,&ram,&cpu))
                 {
+                    lastcomm_timer.restart();
                     Resource newresource;
                     newresource.NodeName = nodename;
                     newresource.ram_used_Mb = ram;

@@ -78,11 +78,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->bSetRCServer,SIGNAL(clicked(bool)),this,SLOT(change_RC_Server(bool)));
     QTimer *timer_10ms = new QTimer(this);
     connect(timer_10ms,SIGNAL(timeout()),this,SLOT(update_devicelist()));
+    connect(timer_10ms,SIGNAL(timeout()),this,SLOT(update_commstatus()));
     timer_10ms->start(10);
 
     QTimer *timer_100ms = new QTimer(this);
     connect(timer_100ms,SIGNAL(timeout()),this,SLOT(update_devicelistviewer()));
     connect(timer_100ms,SIGNAL(timeout()),this,SLOT(send_Heartbeat_message()));
+
     timer_100ms->start(100);
 
     connect(ui->dial_1,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
@@ -111,6 +113,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 }
+void MainWindow::update_commstatus()
+{
+    qint64 time_sincelastcomm = myReceiver.get_lastcomm();
+    if(time_sincelastcomm > 500)// mS
+    {
+        armdisarm_state = ARMEDSTATUS_DISARMED_CANNOTARM;
+        armdisarm_command = ARMEDCOMMAND_DISARM;
+    }
+}
+
 void MainWindow::bRTH_pressed()
 {
     ui->armslider1->setValue(0);

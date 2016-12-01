@@ -53,6 +53,8 @@
 
 #include <QDialog>
 #include <QHostAddress>
+#include <QTimer>
+#include <QElapsedTimer>
 #include "helper.h"
 #include "udpmessage.h"
 QT_BEGIN_NAMESPACE
@@ -67,6 +69,7 @@ class Receiver : public QObject
 
 public:
     Receiver(QWidget *parent = 0);
+    qint64 get_lastcomm() { return lastcomm_timer.elapsed(); }
     void Start();
 
 private slots:
@@ -81,7 +84,7 @@ private:
     QUdpSocket *udpSocket;
     QHostAddress groupAddress;
     UDPMessageHandler *udpmessagehandler;
-
+    QElapsedTimer lastcomm_timer;
 };
 
 #endif

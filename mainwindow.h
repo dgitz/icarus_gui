@@ -45,7 +45,7 @@ public slots:
     void update_devicelist();
     void update_devicelistviewer();
     void change_RC_Server(bool set);
-
+    void update_commstatus();
     void send_RC_message(int);
     void send_ArmControl_message(int);
     void send_Arm_Command_message(int);
@@ -57,6 +57,7 @@ public slots:
     void b4_pressed();
 
     void bRTH_pressed();
+
 
 signals:
     void new_diagnosticmessage(Diagnostic);
@@ -75,6 +76,8 @@ private:
     QString DeviceName;
     int armdisarm_command;
     int armdisarm_state;
+
+
 };
 
 #endif // MAINWINDOW_H
