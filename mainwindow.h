@@ -31,6 +31,7 @@ public:
     ~MainWindow();
     std::string get_level_string(int);
 
+
 public slots:
     void update_messageviewer(const Diagnostic &diag);
     void update_armeddisarmed_text(const int);
@@ -42,6 +43,7 @@ public slots:
     void clearfilter_messageviewer();
     void update_devicelist(const Diagnostic &diag);
     void update_devicelist(const Device &device);
+    void check_set_allcontrols_todefault();
     void update_devicelist();
     void update_devicelistviewer();
     void change_RC_Server(bool set);

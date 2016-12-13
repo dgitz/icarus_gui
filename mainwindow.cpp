@@ -79,6 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer *timer_10ms = new QTimer(this);
     connect(timer_10ms,SIGNAL(timeout()),this,SLOT(update_devicelist()));
     connect(timer_10ms,SIGNAL(timeout()),this,SLOT(update_commstatus()));
+    connect(timer_10ms,SIGNAL(timeout()),this,SLOT(check_set_allcontrols_todefault()));
     timer_10ms->start(10);
 
     QTimer *timer_100ms = new QTimer(this);
@@ -113,6 +114,30 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 }
+void MainWindow::check_set_allcontrols_todefault()
+{
+    if((armdisarm_command == ARMEDCOMMAND_ARM) && (armdisarm_state == ARMEDSTATUS_ARMED)) //Nothing to do here
+    {
+    }
+    else
+    {
+        ui->dial_1->setValue(0);
+        ui->dial_1_horz_slider->setValue(0);
+        ui->dial_1_vert_slider->setValue(0);
+        ui->dial_2->setValue(0);
+        ui->dial_2_horz_slider->setValue(0);
+        ui->dial_2_vert_slider->setValue(0);
+        ui->dial_3->setValue(0);
+        ui->dial_4->setValue(0);
+        ui->armslider1->setValue(0);
+        ui->armslider2->setValue(0);
+        ui->armslider3->setValue(0);
+        ui->armslider4->setValue(0);
+        ui->armslider5->setValue(0);
+        ui->armslider6->setValue(0);
+    }
+}
+
 void MainWindow::update_commstatus()
 {
     qint64 time_sincelastcomm = myReceiver.get_lastcomm();
@@ -121,6 +146,7 @@ void MainWindow::update_commstatus()
         armdisarm_state = ARMEDSTATUS_DISARMED_CANNOTARM;
         armdisarm_command = ARMEDCOMMAND_DISARM;
     }
+
 }
 
 void MainWindow::bRTH_pressed()
@@ -253,6 +279,7 @@ void MainWindow::clearfilter_messageviewer()
 }
 void MainWindow::update_armeddisarmed_text(int value)
 {
+    armdisarm_state = value;
     QString tempstr;
      switch (value)
      {
