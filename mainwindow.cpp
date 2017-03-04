@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     std::string default_ROSCORE = "10.0.0.111";
-    armdisarm_command = ARMEDCOMMAND_DISARM;
+    armdisarm_command = ROVERCOMMAND_DISARM;
     armdisarm_state = ARMEDSTATUS_DISARMED_CANNOTARM;
 
     QList<QHostAddress> list = QNetworkInterface::allAddresses();
@@ -116,7 +116,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 void MainWindow::check_set_allcontrols_todefault()
 {
-    if((armdisarm_command == ARMEDCOMMAND_ARM) && (armdisarm_state == ARMEDSTATUS_ARMED)) //Nothing to do here
+    if((armdisarm_command == ROVERCOMMAND_ARM) && (armdisarm_state == ARMEDSTATUS_ARMED)) //Nothing to do here
     {
     }
     else
@@ -144,7 +144,7 @@ void MainWindow::update_commstatus()
     if(time_sincelastcomm > 500)// mS
     {
         armdisarm_state = ARMEDSTATUS_DISARMED_CANNOTARM;
-        armdisarm_command = ARMEDCOMMAND_DISARM;
+        armdisarm_command = ROVERCOMMAND_DISARM;
     }
 
 }
@@ -160,8 +160,8 @@ void MainWindow::bRTH_pressed()
 }
 void MainWindow::bArmDisarm_pressed()
 {
-    if(armdisarm_command == ARMEDCOMMAND_DISARM) { armdisarm_command = ARMEDCOMMAND_ARM; }
-    else { armdisarm_command = ARMEDCOMMAND_DISARM; }
+    if(armdisarm_command == ROVERCOMMAND_DISARM) { armdisarm_command = ROVERCOMMAND_ARM; }
+    else { armdisarm_command = ROVERCOMMAND_DISARM; }
     send_Arm_Command_message(armdisarm_command);
 }
 
