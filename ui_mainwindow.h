@@ -14,17 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDial>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollBar>
-#include <QtWidgets/QSlider>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTreeWidget>
@@ -49,34 +45,6 @@ public:
     QLabel *label_2;
     QPushButton *bClearFilter;
     QWidget *tabResources;
-    QWidget *tab;
-    QGridLayout *gridLayout;
-    QGridLayout *gridLayout_2;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_3;
-    QLCDNumber *lcdNumber_2;
-    QLabel *label_4;
-    QLCDNumber *lcdNumber;
-    QHBoxLayout *horizontalLayout_6;
-    QDial *dial_1;
-    QSlider *dial_1_vert_slider;
-    QHBoxLayout *horizontalLayout_8;
-    QSlider *dial_2_vert_slider;
-    QDial *dial_2;
-    QGridLayout *gridLayout_4;
-    QPushButton *b2;
-    QDial *dial_4;
-    QPushButton *b1;
-    QPushButton *b4;
-    QGridLayout *gridLayout_10;
-    QPushButton *b3;
-    QDial *dial_3;
-    QSlider *dial_2_horz_slider;
-    QSlider *dial_1_horz_slider;
-    QPushButton *bSetRCServer;
-    QLineEdit *tRCServer;
-    QLabel *label;
-    QPushButton *bArmDisarm;
     QWidget *tab_2;
     QComboBox *cArmChooser;
     QScrollBar *armslider1;
@@ -89,6 +57,9 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *bLaunchSystem;
+    QLineEdit *tRCServer;
+    QPushButton *bSetRCServer;
+    QPushButton *bArmDisarm;
     QPushButton *bStopSystem;
     QPushButton *bCLOSE;
 
@@ -166,207 +137,6 @@ public:
         tabResources = new QWidget();
         tabResources->setObjectName(QStringLiteral("tabResources"));
         tabWidget->addTab(tabResources, QString());
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        gridLayout = new QGridLayout(tab);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout_2 = new QGridLayout();
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        label_3 = new QLabel(tab);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        horizontalLayout_3->addWidget(label_3);
-
-        lcdNumber_2 = new QLCDNumber(tab);
-        lcdNumber_2->setObjectName(QStringLiteral("lcdNumber_2"));
-
-        horizontalLayout_3->addWidget(lcdNumber_2);
-
-        label_4 = new QLabel(tab);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        horizontalLayout_3->addWidget(label_4);
-
-        lcdNumber = new QLCDNumber(tab);
-        lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
-
-        horizontalLayout_3->addWidget(lcdNumber);
-
-
-        gridLayout_2->addLayout(horizontalLayout_3, 0, 1, 1, 1);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        dial_1 = new QDial(tab);
-        dial_1->setObjectName(QStringLiteral("dial_1"));
-        dial_1->setMinimum(-32768);
-        dial_1->setMaximum(32767);
-        dial_1->setSingleStep(10);
-        dial_1->setNotchTarget(10);
-        dial_1->setNotchesVisible(true);
-
-        horizontalLayout_6->addWidget(dial_1);
-
-        dial_1_vert_slider = new QSlider(tab);
-        dial_1_vert_slider->setObjectName(QStringLiteral("dial_1_vert_slider"));
-        dial_1_vert_slider->setMinimum(-32768);
-        dial_1_vert_slider->setMaximum(32767);
-        dial_1_vert_slider->setOrientation(Qt::Vertical);
-        dial_1_vert_slider->setTickPosition(QSlider::TicksBothSides);
-        dial_1_vert_slider->setTickInterval(6550);
-
-        horizontalLayout_6->addWidget(dial_1_vert_slider);
-
-
-        gridLayout_2->addLayout(horizontalLayout_6, 1, 0, 1, 1);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        dial_2_vert_slider = new QSlider(tab);
-        dial_2_vert_slider->setObjectName(QStringLiteral("dial_2_vert_slider"));
-        dial_2_vert_slider->setMinimum(-32768);
-        dial_2_vert_slider->setMaximum(32767);
-        dial_2_vert_slider->setOrientation(Qt::Vertical);
-        dial_2_vert_slider->setTickPosition(QSlider::TicksBothSides);
-        dial_2_vert_slider->setTickInterval(6550);
-
-        horizontalLayout_8->addWidget(dial_2_vert_slider);
-
-        dial_2 = new QDial(tab);
-        dial_2->setObjectName(QStringLiteral("dial_2"));
-        dial_2->setMinimum(-32768);
-        dial_2->setMaximum(32767);
-        dial_2->setSingleStep(10);
-        dial_2->setNotchTarget(10);
-        dial_2->setNotchesVisible(true);
-
-        horizontalLayout_8->addWidget(dial_2);
-
-
-        gridLayout_2->addLayout(horizontalLayout_8, 1, 2, 1, 1);
-
-        gridLayout_4 = new QGridLayout();
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        b2 = new QPushButton(tab);
-        b2->setObjectName(QStringLiteral("b2"));
-        b2->setMinimumSize(QSize(0, 75));
-
-        gridLayout_4->addWidget(b2, 2, 1, 1, 1);
-
-        dial_4 = new QDial(tab);
-        dial_4->setObjectName(QStringLiteral("dial_4"));
-        dial_4->setMaximumSize(QSize(16777215, 120));
-        dial_4->setMinimum(-32768);
-        dial_4->setMaximum(32767);
-        dial_4->setSingleStep(10);
-        dial_4->setNotchTarget(10);
-        dial_4->setNotchesVisible(true);
-
-        gridLayout_4->addWidget(dial_4, 6, 1, 1, 1);
-
-        b1 = new QPushButton(tab);
-        b1->setObjectName(QStringLiteral("b1"));
-        b1->setMinimumSize(QSize(0, 75));
-
-        gridLayout_4->addWidget(b1, 2, 0, 1, 1);
-
-        b4 = new QPushButton(tab);
-        b4->setObjectName(QStringLiteral("b4"));
-        b4->setMinimumSize(QSize(0, 75));
-
-        gridLayout_4->addWidget(b4, 3, 1, 1, 1);
-
-        gridLayout_10 = new QGridLayout();
-        gridLayout_10->setSpacing(6);
-        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
-        b3 = new QPushButton(tab);
-        b3->setObjectName(QStringLiteral("b3"));
-        b3->setMinimumSize(QSize(0, 75));
-
-        gridLayout_10->addWidget(b3, 2, 0, 1, 1);
-
-
-        gridLayout_4->addLayout(gridLayout_10, 3, 0, 1, 1);
-
-        dial_3 = new QDial(tab);
-        dial_3->setObjectName(QStringLiteral("dial_3"));
-        dial_3->setMaximumSize(QSize(16777215, 120));
-        dial_3->setMinimum(-32768);
-        dial_3->setMaximum(32767);
-        dial_3->setSingleStep(10);
-        dial_3->setNotchTarget(10);
-        dial_3->setNotchesVisible(true);
-
-        gridLayout_4->addWidget(dial_3, 6, 0, 1, 1);
-
-
-        gridLayout_2->addLayout(gridLayout_4, 1, 1, 1, 1);
-
-        dial_2_horz_slider = new QSlider(tab);
-        dial_2_horz_slider->setObjectName(QStringLiteral("dial_2_horz_slider"));
-        dial_2_horz_slider->setMinimum(-32768);
-        dial_2_horz_slider->setMaximum(32767);
-        dial_2_horz_slider->setOrientation(Qt::Horizontal);
-        dial_2_horz_slider->setTickPosition(QSlider::TicksBothSides);
-        dial_2_horz_slider->setTickInterval(6550);
-
-        gridLayout_2->addWidget(dial_2_horz_slider, 0, 2, 1, 1);
-
-        dial_1_horz_slider = new QSlider(tab);
-        dial_1_horz_slider->setObjectName(QStringLiteral("dial_1_horz_slider"));
-        dial_1_horz_slider->setMinimum(-32768);
-        dial_1_horz_slider->setMaximum(32767);
-        dial_1_horz_slider->setSingleStep(10);
-        dial_1_horz_slider->setPageStep(0);
-        dial_1_horz_slider->setOrientation(Qt::Horizontal);
-        dial_1_horz_slider->setTickPosition(QSlider::TicksBothSides);
-        dial_1_horz_slider->setTickInterval(6550);
-
-        gridLayout_2->addWidget(dial_1_horz_slider, 0, 0, 1, 1);
-
-
-        gridLayout->addLayout(gridLayout_2, 1, 0, 1, 5);
-
-        bSetRCServer = new QPushButton(tab);
-        bSetRCServer->setObjectName(QStringLiteral("bSetRCServer"));
-        bSetRCServer->setMaximumSize(QSize(50, 16777215));
-        QFont font2;
-        font2.setPointSize(12);
-        bSetRCServer->setFont(font2);
-
-        gridLayout->addWidget(bSetRCServer, 0, 3, 1, 1);
-
-        tRCServer = new QLineEdit(tab);
-        tRCServer->setObjectName(QStringLiteral("tRCServer"));
-        tRCServer->setMaximumSize(QSize(200, 16777215));
-
-        gridLayout->addWidget(tRCServer, 0, 2, 1, 1);
-
-        label = new QLabel(tab);
-        label->setObjectName(QStringLiteral("label"));
-        label->setMaximumSize(QSize(120, 16777215));
-        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(label, 0, 1, 1, 1);
-
-        bArmDisarm = new QPushButton(tab);
-        bArmDisarm->setObjectName(QStringLiteral("bArmDisarm"));
-        bArmDisarm->setMinimumSize(QSize(0, 60));
-
-        gridLayout->addWidget(bArmDisarm, 0, 0, 1, 1);
-
-        tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         cArmChooser = new QComboBox(tab_2);
@@ -427,6 +197,27 @@ public:
 
         horizontalLayout->addWidget(bLaunchSystem);
 
+        tRCServer = new QLineEdit(horizontalLayoutWidget);
+        tRCServer->setObjectName(QStringLiteral("tRCServer"));
+        tRCServer->setMaximumSize(QSize(200, 16777215));
+
+        horizontalLayout->addWidget(tRCServer);
+
+        bSetRCServer = new QPushButton(horizontalLayoutWidget);
+        bSetRCServer->setObjectName(QStringLiteral("bSetRCServer"));
+        bSetRCServer->setMaximumSize(QSize(50, 16777215));
+        QFont font2;
+        font2.setPointSize(12);
+        bSetRCServer->setFont(font2);
+
+        horizontalLayout->addWidget(bSetRCServer);
+
+        bArmDisarm = new QPushButton(horizontalLayoutWidget);
+        bArmDisarm->setObjectName(QStringLiteral("bArmDisarm"));
+        bArmDisarm->setMinimumSize(QSize(0, 30));
+
+        horizontalLayout->addWidget(bArmDisarm);
+
         bStopSystem = new QPushButton(horizontalLayoutWidget);
         bStopSystem->setObjectName(QStringLiteral("bStopSystem"));
         bStopSystem->setMinimumSize(QSize(110, 30));
@@ -461,19 +252,11 @@ public:
         bClearFilter->setText(QApplication::translate("MainWindow", "Clear Filter", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabDiagnostics), QApplication::translate("MainWindow", "Diagnostics", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabResources), QApplication::translate("MainWindow", "Resources", 0));
-        label_3->setText(QApplication::translate("MainWindow", "V:", 0));
-        label_4->setText(QApplication::translate("MainWindow", "A:", 0));
-        b2->setText(QApplication::translate("MainWindow", "B2", 0));
-        b1->setText(QApplication::translate("MainWindow", "B1", 0));
-        b4->setText(QApplication::translate("MainWindow", "B4", 0));
-        b3->setText(QApplication::translate("MainWindow", "B3", 0));
-        bSetRCServer->setText(QApplication::translate("MainWindow", "SET", 0));
-        label->setText(QApplication::translate("MainWindow", "ROS Core:", 0));
-        bArmDisarm->setText(QApplication::translate("MainWindow", "UNDEFINED", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Remote Control", 0));
         bRTH->setText(QApplication::translate("MainWindow", "Return To Home", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Arm", 0));
         bLaunchSystem->setText(QApplication::translate("MainWindow", "Launch System", 0));
+        bSetRCServer->setText(QApplication::translate("MainWindow", "SET", 0));
+        bArmDisarm->setText(QApplication::translate("MainWindow", "UNDEFINED", 0));
         bStopSystem->setText(QApplication::translate("MainWindow", "Stop System", 0));
         bCLOSE->setText(QApplication::translate("MainWindow", "CLOSE", 0));
     } // retranslateUi

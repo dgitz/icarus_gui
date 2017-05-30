@@ -87,20 +87,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer_100ms,SIGNAL(timeout()),this,SLOT(send_Heartbeat_message()));
 
     timer_100ms->start(100);
-
-    connect(ui->dial_1,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_1_horz_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_1_vert_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_2,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_2_horz_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_2_vert_slider,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_3,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    connect(ui->dial_4,SIGNAL(valueChanged(int)),this,SLOT(send_RC_message(int)));
-    for(int i = 0; i < 4; i++) { buttons.push_back(0); }
-    connect(ui->b1,SIGNAL(pressed()),this,SLOT(b1_pressed()));
-    connect(ui->b2,SIGNAL(pressed()),this,SLOT(b2_pressed()));
-    connect(ui->b3,SIGNAL(pressed()),this,SLOT(b3_pressed()));
-    connect(ui->b4,SIGNAL(pressed()),this,SLOT(b4_pressed()));
     connect(ui->bArmDisarm,SIGNAL(pressed()),this,SLOT(bArmDisarm_pressed()));
 
     connect(ui->armslider1,SIGNAL(valueChanged(int)),this,SLOT(send_ArmControl_message(int)));
@@ -121,14 +107,6 @@ void MainWindow::check_set_allcontrols_todefault()
     }
     else
     {
-        ui->dial_1->setValue(0);
-        ui->dial_1_horz_slider->setValue(0);
-        ui->dial_1_vert_slider->setValue(0);
-        ui->dial_2->setValue(0);
-        ui->dial_2_horz_slider->setValue(0);
-        ui->dial_2_vert_slider->setValue(0);
-        ui->dial_3->setValue(0);
-        ui->dial_4->setValue(0);
         ui->armslider1->setValue(0);
         ui->armslider2->setValue(0);
         ui->armslider3->setValue(0);
@@ -165,30 +143,7 @@ void MainWindow::bArmDisarm_pressed()
     send_Arm_Command_message(armdisarm_command);
 }
 
-void MainWindow::b1_pressed()
-{
-    if(buttons.at(0) == 0) { buttons.at(0) = 1; }
-    else { buttons.at(0) = 0; }
-     send_RC_message(0);
-}
-void MainWindow::b2_pressed()
-{
-    if(buttons.at(1) == 0) { buttons.at(1) = 1; }
-    else { buttons.at(1) = 0; }
-    send_RC_message(0);
-}
-void MainWindow::b3_pressed()
-{
-    if(buttons.at(2) == 0) { buttons.at(2) = 1; }
-    else { buttons.at(2) = 0; }
-    send_RC_message(0);
-}
-void MainWindow::b4_pressed()
-{
-    if(buttons.at(3) == 0) { buttons.at(3) = 1; }
-    else { buttons.at(3) = 0; }
-    send_RC_message(0);
-}
+
 
 void MainWindow::change_RC_Server(bool set)
 {
@@ -219,18 +174,6 @@ void MainWindow::send_Heartbeat_message()
     myTransmitter.send_Heartbeat_0xAB31(DeviceName.toStdString(),unixtime,unixtime2);
 }
 
-void MainWindow::send_RC_message(int a)
-{
-    myTransmitter.send_RemoteControl_0xAB10(ui->dial_1->value(),
-                                            ui->dial_1_horz_slider->value(),
-                                            ui->dial_1_vert_slider->value(),
-                                            ui->dial_2->value(),
-                                            ui->dial_2_horz_slider->value(),
-                                            ui->dial_2_vert_slider->value(),
-                                            ui->dial_3->value(),
-                                            ui->dial_4->value(),
-                                            buttons.at(0),buttons.at(1),buttons.at(2),buttons.at(3),0,0,0,0);
-}
 void MainWindow::send_Arm_Command_message(int a)
 {
     myTransmitter.send_ArmCommand_0xAB27(armdisarm_command);

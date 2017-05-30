@@ -64,7 +64,11 @@ void Receiver::Start()
     groupAddress = QHostAddress("239.255.43.21");
     udpSocket = new QUdpSocket(this);
     udpSocket->bind(QHostAddress::AnyIPv4, 45454, QUdpSocket::ShareAddress);
-    udpSocket->joinMulticastGroup(groupAddress);
+    QList<QNetworkInterface> list = QNetworkInterface::allInterfaces();
+    foreach (QNetworkInterface iface, list)
+    {
+         udpSocket->joinMulticastGroup(groupAddress,iface);
+    }
 
     connect(udpSocket, SIGNAL(readyRead()),
             this, SLOT(processPendingDatagrams()));
