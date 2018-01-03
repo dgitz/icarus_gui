@@ -44,6 +44,8 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QPushButton *bClearFilter;
+    QLabel *lNodeDescription;
+    QLabel *lNodeVersion;
     QWidget *tabResources;
     QWidget *tab_2;
     QComboBox *cArmChooser;
@@ -73,6 +75,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setEnabled(true);
         tabWidget->setGeometry(QRect(20, 10, 911, 431));
         QFont font;
         font.setPointSize(14);
@@ -109,9 +112,9 @@ public:
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
         treeDeviceList->setHeaderItem(__qtreewidgetitem);
         treeDeviceList->setObjectName(QStringLiteral("treeDeviceList"));
-        treeDeviceList->setGeometry(QRect(499, 29, 451, 340));
-        treeDeviceList->setMinimumSize(QSize(451, 340));
-        treeDeviceList->setMaximumSize(QSize(451, 340));
+        treeDeviceList->setGeometry(QRect(500, 40, 400, 275));
+        treeDeviceList->setMinimumSize(QSize(400, 275));
+        treeDeviceList->setMaximumSize(QSize(300, 275));
         layoutWidget1 = new QWidget(tabDiagnostics);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(500, 0, 449, 33));
@@ -133,12 +136,22 @@ public:
 
         horizontalLayout_2->addWidget(bClearFilter);
 
+        lNodeDescription = new QLabel(tabDiagnostics);
+        lNodeDescription->setObjectName(QStringLiteral("lNodeDescription"));
+        lNodeDescription->setGeometry(QRect(500, 320, 391, 31));
+        lNodeDescription->setFrameShape(QFrame::Box);
+        lNodeVersion = new QLabel(tabDiagnostics);
+        lNodeVersion->setObjectName(QStringLiteral("lNodeVersion"));
+        lNodeVersion->setGeometry(QRect(500, 360, 391, 31));
+        lNodeVersion->setFrameShape(QFrame::Box);
         tabWidget->addTab(tabDiagnostics, QString());
         tabResources = new QWidget();
         tabResources->setObjectName(QStringLiteral("tabResources"));
+        tabResources->setEnabled(false);
         tabWidget->addTab(tabResources, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
+        tab_2->setEnabled(false);
         cArmChooser = new QComboBox(tab_2);
         cArmChooser->setObjectName(QStringLiteral("cArmChooser"));
         cArmChooser->setGeometry(QRect(10, 20, 231, 23));
@@ -239,7 +252,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -250,6 +263,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         label_2->setText(QApplication::translate("MainWindow", "AVAILABLE NODES", 0));
         bClearFilter->setText(QApplication::translate("MainWindow", "Clear Filter", 0));
+        lNodeDescription->setText(QApplication::translate("MainWindow", "Node Description", 0));
+        lNodeVersion->setText(QApplication::translate("MainWindow", "Node Version", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabDiagnostics), QApplication::translate("MainWindow", "Diagnostics", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabResources), QApplication::translate("MainWindow", "Resources", 0));
         bRTH->setText(QApplication::translate("MainWindow", "Return To Home", 0));

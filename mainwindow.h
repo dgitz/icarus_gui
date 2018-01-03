@@ -46,6 +46,7 @@ public slots:
     void check_set_allcontrols_todefault();
     void update_devicelist();
     void update_devicelistviewer();
+    void update_firmware(const Firmware &fw);
     void change_RC_Server(bool set);
     void update_commstatus();
     void send_ArmControl_message(int);

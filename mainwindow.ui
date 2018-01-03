@@ -21,6 +21,9 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -35,7 +38,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabDiagnostics">
      <attribute name="title">
@@ -93,22 +96,22 @@
      <widget class="QTreeWidget" name="treeDeviceList">
       <property name="geometry">
        <rect>
-        <x>499</x>
-        <y>29</y>
-        <width>451</width>
-        <height>340</height>
+        <x>500</x>
+        <y>40</y>
+        <width>400</width>
+        <height>275</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
-        <width>451</width>
-        <height>340</height>
+        <width>400</width>
+        <height>275</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>451</width>
-        <height>340</height>
+        <width>300</width>
+        <height>275</height>
        </size>
       </property>
       <column>
@@ -158,13 +161,51 @@
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="lNodeDescription">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>320</y>
+        <width>391</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Node Description</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lNodeVersion">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>360</y>
+        <width>391</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Node Version</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabResources">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Resources</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="tab_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Arm</string>
      </attribute>

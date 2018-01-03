@@ -145,18 +145,33 @@ void Receiver::processPendingDatagrams()
                 }
                 break;
             }
-
+            case FIRMWARE_ID:
+            {
+                std::string nodename,description;
+                int majorrelease,minorrelease,buildnumber;
+                if(udpmessagehandler->decode_FirmwareUDP(items,&nodename,&description,&majorrelease,&minorrelease,&buildnumber))
+                {
+                    lastcomm_timer.restart();
+                    Firmware newfirmware;
+                    newfirmware.Node_Name = nodename;
+                    newfirmware.Description = description;
+                    newfirmware.MajorRelease = majorrelease;
+                    newfirmware.MinorRelease = minorrelease;
+                    newfirmware.BuildNumber = buildnumber;
+                    emit new_firmwaremessage(newfirmware);
+                }
+            }
             default:
             {
                 //qDebug() << "No Match";
                 break;
             }
         }
-        foreach (const QByteArray &item,items)
+        /*foreach (const QByteArray &item,items)
         {
-            //qDebug() << item;
+            qDebug() << item;
         }
-
+        */
 
 
         //statusLabel->setText(tr("Received datagram: \"%1\"")

@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("ERROR");
     ui->comboBox->addItem("FATAL");
     ui->comboBox->setCurrentIndex(2);
-
+    ui->tabWidget->setCurrentIndex(0);
 
     ui->cArmChooser->addItem("Left Arm");
     ui->cArmChooser->addItem("Right Arm");
@@ -67,6 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     myReceiver.Start();
     connect(&myReceiver,SIGNAL(new_diagnosticmessage(Diagnostic)),this,SLOT(update_messageviewer(Diagnostic)));
     connect(&myReceiver,SIGNAL(new_armedstatusmessage(int)),this,SLOT(update_armeddisarmed_text(int)));
+    connect(&myReceiver,SIGNAL(new_firmwaremessage(Firmware)),this,SLOT(update_firmware(Firmware)));
     connect(ui->bCLOSE,SIGNAL(clicked(bool)),this,SLOT(kill_application(bool)));
     connect(ui->comboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(clear_messageviewer(QString)));
     connect(ui->treeDeviceList,SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),this,SLOT(changefilter_messageviewer()));
@@ -207,6 +208,8 @@ void MainWindow::changefilter_messageviewer()
     QString item = ui->treeDeviceList->currentItem()->text(0);
     messageviewer_filter = item;
     ui->textBrowser->clear();
+    ui->lNodeDescription->setText("Node Description");
+    ui->lNodeVersion->setText("Node Version");
    //qDebug() << "changing filter to: " << item;
 
    // qDebug() << " new: " << newitem.text(0);
@@ -219,7 +222,17 @@ void MainWindow::clear_messageviewer(QString value)
 void MainWindow::clearfilter_messageviewer()
 {
     messageviewer_filter = "";
+    ui->lNodeDescription->setText("Node Description");
+    ui->lNodeVersion->setText("Node Version");
     ui->textBrowser->clear();
+}
+void MainWindow::update_firmware(const Firmware &fw)
+{
+    if((messageviewer_filter != "") and (messageviewer_filter == QString::fromStdString(fw.Node_Name)))
+    {
+        ui->lNodeDescription->setText(QString::fromStdString(fw.Description));
+        ui->lNodeVersion->setText("Major: " + QString::number(fw.MajorRelease) + " Minor: " + QString::number(fw.MinorRelease) + " Build: " + QString::number(fw.BuildNumber));
+    }
 }
 void MainWindow::update_armeddisarmed_text(int value)
 {
@@ -227,7 +240,7 @@ void MainWindow::update_armeddisarmed_text(int value)
     QString tempstr;
      switch (value)
      {
-        case ARMEDSTATUS_ARMED: tempstr = "ARMED"; break;
+         case ARMEDSTATUS_ARMED: tempstr = "ARMED"; break;
          case ARMEDSTATUS_ARMING: tempstr = "ARMING"; break;
          case ARMEDSTATUS_DISARMED: tempstr = "DISARMED"; break;
          case ARMEDSTATUS_DISARMED_CANNOTARM: tempstr = "DISARMING\nCANNOT ARM"; break;

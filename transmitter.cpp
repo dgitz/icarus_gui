@@ -76,6 +76,7 @@ bool Transmitter::send_ArmControl_0xAB26(int device,int axis1,int axis2,int axis
     QString buffer = udpmessagehandler->encode_ArmControlUDP(device,axis1,axis2,axis3,axis4,axis5,axis6,
                                                              button1,button2,button3,button4,button5,button6);
     xmit_socket->writeDatagram(buffer.toUtf8(),QHostAddress(RC_Server),5678);
+    return true;
     //qDebug() << "Send AB26 to" << RC_Server << " : " << buffer << endl;
 }
 
@@ -89,6 +90,7 @@ bool Transmitter::send_RemoteControl_0xAB10(int axis1,int axis2,int axis3,int ax
     QString buffer = udpmessagehandler->encode_RemoteControlUDP(0,axis1,axis2,axis3,axis4,axis5,axis6,axis7,axis8,
                                                                 button1,button2,button3,button4,button5,button6,button7,button8);
     xmit_socket->writeDatagram(buffer.toUtf8(),QHostAddress(RC_Server),5678);
+    return true;
     //qDebug() << "Send AB10 to" << RC_Server << " : " << buffer << endl;
 }
 bool Transmitter::send_Heartbeat_0xAB31(std::string hostname,uint64_t t,uint64_t t2)
@@ -98,5 +100,6 @@ bool Transmitter::send_Heartbeat_0xAB31(std::string hostname,uint64_t t,uint64_t
     out.setVersion(QDataStream::Qt_4_3);
     QString buffer = udpmessagehandler->encode_HeartbeatUDP(hostname,t,t2);
     xmit_socket->writeDatagram(buffer.toUtf8(),QHostAddress(RC_Server),5678);
+    return true;
     //qDebug() << "Send AB31 to" << RC_Server << " : " << buffer << endl;
 }

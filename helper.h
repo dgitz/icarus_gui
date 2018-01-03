@@ -39,6 +39,13 @@ struct Device
     qint64 time_delta_ms;
     std::vector<Node> Nodes;
 };
-
+struct Firmware
+{
+    std::string Node_Name;
+    std::string Description;
+    int MajorRelease;
+    int MinorRelease;
+    int BuildNumber;
+};
 #endif
 

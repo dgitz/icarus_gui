@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[27];
-    char stringdata0[462];
+    QByteArrayData data[30];
+    char stringdata0[490];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -48,14 +48,17 @@ QT_MOC_LITERAL(15, 238, 17), // "update_devicelist"
 QT_MOC_LITERAL(16, 256, 6), // "device"
 QT_MOC_LITERAL(17, 263, 31), // "check_set_allcontrols_todefault"
 QT_MOC_LITERAL(18, 295, 23), // "update_devicelistviewer"
-QT_MOC_LITERAL(19, 319, 16), // "change_RC_Server"
-QT_MOC_LITERAL(20, 336, 3), // "set"
-QT_MOC_LITERAL(21, 340, 17), // "update_commstatus"
-QT_MOC_LITERAL(22, 358, 23), // "send_ArmControl_message"
-QT_MOC_LITERAL(23, 382, 24), // "send_Arm_Command_message"
-QT_MOC_LITERAL(24, 407, 22), // "send_Heartbeat_message"
-QT_MOC_LITERAL(25, 430, 18), // "bArmDisarm_pressed"
-QT_MOC_LITERAL(26, 449, 12) // "bRTH_pressed"
+QT_MOC_LITERAL(19, 319, 15), // "update_firmware"
+QT_MOC_LITERAL(20, 335, 8), // "Firmware"
+QT_MOC_LITERAL(21, 344, 2), // "fw"
+QT_MOC_LITERAL(22, 347, 16), // "change_RC_Server"
+QT_MOC_LITERAL(23, 364, 3), // "set"
+QT_MOC_LITERAL(24, 368, 17), // "update_commstatus"
+QT_MOC_LITERAL(25, 386, 23), // "send_ArmControl_message"
+QT_MOC_LITERAL(26, 410, 24), // "send_Arm_Command_message"
+QT_MOC_LITERAL(27, 435, 22), // "send_Heartbeat_message"
+QT_MOC_LITERAL(28, 458, 18), // "bArmDisarm_pressed"
+QT_MOC_LITERAL(29, 477, 12) // "bRTH_pressed"
 
     },
     "MainWindow\0new_diagnosticmessage\0\0"
@@ -66,8 +69,9 @@ QT_MOC_LITERAL(26, 449, 12) // "bRTH_pressed"
     "changefilter_messageviewer\0"
     "clearfilter_messageviewer\0update_devicelist\0"
     "device\0check_set_allcontrols_todefault\0"
-    "update_devicelistviewer\0change_RC_Server\0"
-    "set\0update_commstatus\0send_ArmControl_message\0"
+    "update_devicelistviewer\0update_firmware\0"
+    "Firmware\0fw\0change_RC_Server\0set\0"
+    "update_commstatus\0send_ArmControl_message\0"
     "send_Arm_Command_message\0"
     "send_Heartbeat_message\0bArmDisarm_pressed\0"
     "bRTH_pressed"
@@ -80,7 +84,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -88,30 +92,31 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  124,    2, 0x06 /* Public */,
-       4,    1,  127,    2, 0x06 /* Public */,
+       1,    1,  129,    2, 0x06 /* Public */,
+       4,    1,  132,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,  130,    2, 0x0a /* Public */,
-       8,    1,  133,    2, 0x0a /* Public */,
-       9,    1,  136,    2, 0x0a /* Public */,
-      10,    1,  139,    2, 0x0a /* Public */,
-      11,    1,  142,    2, 0x0a /* Public */,
-      12,    1,  145,    2, 0x0a /* Public */,
-      13,    0,  148,    2, 0x0a /* Public */,
-      14,    0,  149,    2, 0x0a /* Public */,
-      15,    1,  150,    2, 0x0a /* Public */,
-      15,    1,  153,    2, 0x0a /* Public */,
-      17,    0,  156,    2, 0x0a /* Public */,
-      15,    0,  157,    2, 0x0a /* Public */,
-      18,    0,  158,    2, 0x0a /* Public */,
-      19,    1,  159,    2, 0x0a /* Public */,
-      21,    0,  162,    2, 0x0a /* Public */,
-      22,    1,  163,    2, 0x0a /* Public */,
-      23,    1,  166,    2, 0x0a /* Public */,
-      24,    0,  169,    2, 0x0a /* Public */,
-      25,    0,  170,    2, 0x0a /* Public */,
-      26,    0,  171,    2, 0x0a /* Public */,
+       6,    1,  135,    2, 0x0a /* Public */,
+       8,    1,  138,    2, 0x0a /* Public */,
+       9,    1,  141,    2, 0x0a /* Public */,
+      10,    1,  144,    2, 0x0a /* Public */,
+      11,    1,  147,    2, 0x0a /* Public */,
+      12,    1,  150,    2, 0x0a /* Public */,
+      13,    0,  153,    2, 0x0a /* Public */,
+      14,    0,  154,    2, 0x0a /* Public */,
+      15,    1,  155,    2, 0x0a /* Public */,
+      15,    1,  158,    2, 0x0a /* Public */,
+      17,    0,  161,    2, 0x0a /* Public */,
+      15,    0,  162,    2, 0x0a /* Public */,
+      18,    0,  163,    2, 0x0a /* Public */,
+      19,    1,  164,    2, 0x0a /* Public */,
+      22,    1,  167,    2, 0x0a /* Public */,
+      24,    0,  170,    2, 0x0a /* Public */,
+      25,    1,  171,    2, 0x0a /* Public */,
+      26,    1,  174,    2, 0x0a /* Public */,
+      27,    0,  177,    2, 0x0a /* Public */,
+      28,    0,  178,    2, 0x0a /* Public */,
+      29,    0,  179,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -131,7 +136,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   20,
+    QMetaType::Void, 0x80000000 | 20,   21,
+    QMetaType::Void, QMetaType::Bool,   23,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
@@ -163,13 +169,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->check_set_allcontrols_todefault(); break;
         case 13: _t->update_devicelist(); break;
         case 14: _t->update_devicelistviewer(); break;
-        case 15: _t->change_RC_Server((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 16: _t->update_commstatus(); break;
-        case 17: _t->send_ArmControl_message((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 18: _t->send_Arm_Command_message((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 19: _t->send_Heartbeat_message(); break;
-        case 20: _t->bArmDisarm_pressed(); break;
-        case 21: _t->bRTH_pressed(); break;
+        case 15: _t->update_firmware((*reinterpret_cast< const Firmware(*)>(_a[1]))); break;
+        case 16: _t->change_RC_Server((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 17: _t->update_commstatus(); break;
+        case 18: _t->send_ArmControl_message((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->send_Arm_Command_message((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 20: _t->send_Heartbeat_message(); break;
+        case 21: _t->bArmDisarm_pressed(); break;
+        case 22: _t->bRTH_pressed(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -217,13 +224,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }
