@@ -51,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("FATAL");
     ui->comboBox->setCurrentIndex(2);
 
+
     ui->cArmChooser->addItem("Left Arm");
     ui->cArmChooser->addItem("Right Arm");
    //QMainWindow window;
@@ -176,7 +177,7 @@ void MainWindow::send_Heartbeat_message()
 
 void MainWindow::send_Arm_Command_message(int a)
 {
-    myTransmitter.send_ArmCommand_0xAB27(armdisarm_command);
+    //myTransmitter.send_ArmCommand_0xAB27(armdisarm_command);
 }
 
 MainWindow::~MainWindow()
@@ -345,7 +346,7 @@ void MainWindow::update_devicelistviewer()
                             {
                                 (*child_it)->setBackground(0,brush_green);
                             }
-                            else if((DeviceList.at(i).Nodes.at(j).time_delta_ms > 1000) && (DeviceList.at(i).Nodes.at(j).time_delta_ms <= 6000))
+                            else if((DeviceList.at(i).Nodes.at(j).time_delta_ms > 3000) && (DeviceList.at(i).Nodes.at(j).time_delta_ms <= 6000))
                             {
                                 (*child_it)->setBackground(0,brush_orange);
                             }
@@ -387,7 +388,7 @@ void MainWindow::update_devicelistviewer()
                 {
                     (*it)->setBackground(0,brush_green);
                 }
-                else if((device_time_delta > 1000) && (device_time_delta <= 6000))
+                else if((device_time_delta > 3000) && (device_time_delta <= 6000))
                 {
                     (*it)->setBackground(0,brush_orange);
                 }
